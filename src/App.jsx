@@ -14,7 +14,7 @@ function App() {
       <Nav name={site.name} />
       <Hero role={site.role} tagline={site.tagline} />
       <Work projects={projects} />
-      <About bio={site.bio} />
+      <About />
       <Contact email={site.email} />
       <Footer name={site.name} />
     </>
