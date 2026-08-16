@@ -9,13 +9,22 @@ body {
   background: var(--bg);
 }
 
+/* Top-level bands span the full frame; --gutter is the only inset.
+   Backgrounds and borders reach the edges, content stays aligned. */
+.nav,
+section,
+footer {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  max-width: 960px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding-block: clamp(1rem, 2.5vw, 1.5rem);
   border-bottom: 3px solid var(--border);
 }
 
@@ -27,8 +36,14 @@ body {
   text-decoration: none;
 }
 
+.nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+}
+
 .nav nav a {
-  margin-left: 0.75rem;
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
@@ -46,7 +61,7 @@ body {
 }
 
 .nav nav a.nav-resume {
-  margin-left: 1rem;
+  margin-left: 0.25rem;
   background: var(--gold);
   border-color: var(--border);
   box-shadow: 3px 3px 0 0 var(--border);
@@ -59,25 +74,42 @@ body {
   box-shadow: 5px 5px 0 0 var(--border);
 }
 
+/* Below ~640px the four links no longer fit beside the name.
+   Tighten them so they hold one row instead of wrapping to three. */
+@media (max-width: 640px) {
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .nav nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.25rem;
+  }
+
+  .nav nav a {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .nav nav a.nav-resume {
+    margin-left: 0;
+  }
+}
+
 #work h1,
 #case-study h1,
 #creative h1,
 #about h1,
 #not-found h1 {
-  font-size: 26px;
+  font-size: clamp(1.3rem, 2.2vw, 1.625rem);
   line-height: 100%;
   letter-spacing: -0.2px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 21px;
-  }
 }
 
 section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  width: 100%;
+  padding-block: clamp(2rem, 5vw, 3rem);
 }
 
 #hero {
@@ -85,8 +117,7 @@ section {
   overflow: hidden;
   border-bottom: 4px solid var(--border);
   background: var(--gold);
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
+  padding-block: clamp(2.5rem, 6vw, 3.5rem);
 }
 
 #hero h1 {
@@ -103,7 +134,7 @@ section {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 640px;
+  max-width: min(40rem, 100%);
 }
 
 .hero-shapes {
@@ -183,9 +214,14 @@ section {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
   margin-top: 1.5rem;
+}
+
+/* Case study cards carry more text — two up reads better than three */
+#work .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
 
 .card {
@@ -251,7 +287,7 @@ section {
 
 .other-work-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 1.25rem;
   margin-top: 1.5rem;
 }
@@ -304,6 +340,16 @@ section {
   font-size: 1.1rem;
   color: var(--text);
   margin-bottom: 1.5rem;
+  max-width: var(--measure);
+}
+
+#case-study p {
+  max-width: var(--measure);
+}
+
+.image-placeholder,
+#case-study .case-study-meta {
+  max-width: min(52rem, 100%);
 }
 
 .case-study-meta {
@@ -354,6 +400,7 @@ section {
 .about-paragraph {
   margin-top: 1rem;
   line-height: 1.55;
+  max-width: var(--measure);
 }
 
 .about-paragraph:first-of-type {
@@ -362,7 +409,7 @@ section {
 
 .about-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -485,6 +532,8 @@ section {
 .teaser p {
   font-size: 1.1rem;
   margin-bottom: 1rem;
+  max-width: var(--measure);
+  margin-inline: auto;
 }
 
 #not-found {
@@ -511,7 +560,7 @@ section {
 
 footer {
   text-align: center;
-  padding: 2rem;
+  padding-block: 2rem;
   color: var(--cream);
   background: var(--purple);
   font-size: 0.85rem;
@@ -533,11 +582,12 @@ footer p {
   color: var(--text);
   font-size: 1.05rem;
   margin: 1rem 0 2rem;
+  max-width: var(--measure);
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
   gap: 1.25rem;
 }
 
