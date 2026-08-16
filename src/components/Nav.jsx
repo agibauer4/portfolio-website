@@ -1,11 +1,18 @@
+import { Link } from 'react-router-dom'
+
 function Nav({ name }) {
   return (
     <header className="nav">
-      <span className="nav-name">{name}</span>
+      <Link className="nav-name" to="/">
+        {name}
+      </Link>
       <nav>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <Link to="/work">Work</Link>
+        <Link to="/creative">Creative</Link>
+        <Link to="/about">About</Link>
+        <a className="nav-resume" href="#">
+          Résumé ↓
+        </a>
       </nav>
     </header>
   )

@@ -1,25 +1,25 @@
 import './App.css'
-import { site } from './data/site.js'
-import { projects } from './data/projects.js'
-import Nav from './components/Nav.jsx'
-import Hero from './components/Hero.jsx'
-import Work from './components/Work.jsx'
-import About from './components/About.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout.jsx'
+import Home from './pages/Home.jsx'
+import Work from './pages/Work.jsx'
+import CaseStudy from './pages/CaseStudy.jsx'
+import Creative from './pages/Creative.jsx'
+import About from './pages/About.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function App() {
   return (
-    <>
-      <Nav name={site.name} />
-      <Hero role={site.role} tagline={site.tagline} />
-      <div className="scallop" aria-hidden="true" />
-      <Work projects={projects} />
-      <About />
-      <div className="arch-divider" aria-hidden="true" />
-      <Contact email={site.email} />
-      <Footer name={site.name} />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/work/:slug" element={<CaseStudy />} />
+        <Route path="/creative" element={<Creative />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }
 

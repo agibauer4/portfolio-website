@@ -24,6 +24,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.5px;
+  text-decoration: none;
 }
 
 .nav nav a {
@@ -42,6 +43,34 @@ body {
 .nav nav a:hover {
   background: var(--gold);
   border-color: var(--border);
+}
+
+.nav nav a.nav-resume {
+  margin-left: 1rem;
+  background: var(--gold);
+  border-color: var(--border);
+  box-shadow: 3px 3px 0 0 var(--border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav nav a.nav-resume:hover {
+  background: var(--gold);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--border);
+}
+
+#work h1,
+#case-study h1,
+#creative h1,
+#about h1,
+#not-found h1 {
+  font-size: 26px;
+  line-height: 100%;
+  letter-spacing: -0.2px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 21px;
+  }
 }
 
 section {
@@ -101,8 +130,139 @@ section {
   font-size: 1.25rem;
 }
 
+.card .link-arrow {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.card-image-placeholder {
+  aspect-ratio: 16 / 9;
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: calc(var(--radius-card) - 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+}
+
+.card-large {
+  padding: 2rem;
+}
+
+.card-large .card-image-placeholder {
+  aspect-ratio: 16 / 10;
+}
+
+.card-large h3 {
+  font-size: 1.5rem;
+}
+
+.other-work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.other-work-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+}
+
+.other-work-tag {
+  display: inline-block;
+  background: var(--cream);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.other-work-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+.other-work-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
 #about {
   padding-bottom: 2rem;
+}
+
+#case-study h2 {
+  margin-top: 2rem;
+}
+
+#case-study h2:first-child {
+  margin-top: 0;
+}
+
+.case-study-summary {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.case-study-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.case-study-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.case-study-meta-label {
+  font-family: var(--heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--purple);
+}
+
+.image-placeholder {
+  aspect-ratio: 16 / 9;
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6b6b;
+  margin: 1rem 0 2rem;
+}
+
+.case-study-next {
+  margin-top: 2rem;
 }
 
 .about-paragraph {
@@ -201,16 +361,7 @@ section {
   border-radius: var(--radius-pill);
 }
 
-#contact {
-  background: var(--green);
-  border-bottom: 4px solid var(--border);
-}
-
-#contact h2 {
-  color: var(--cream);
-}
-
-#contact a {
+.btn {
   font-weight: 700;
   text-decoration: none;
   border: 3px solid var(--border);
@@ -223,9 +374,37 @@ section {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-#contact a:hover {
+.btn:hover {
   transform: translate(-3px, -3px);
   box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 0 var(--border);
+}
+
+.link-arrow {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1px;
+}
+
+.link-arrow:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+.teaser {
+  text-align: center;
+}
+
+.teaser p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+#not-found {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .scallop {
@@ -238,7 +417,7 @@ section {
 
 .arch-divider {
   height: 22px;
-  background-color: var(--green);
+  background-color: var(--purple);
   background-image: radial-gradient(circle at 14px 22px, transparent 12px, var(--bg) 13px);
   background-size: 28px 22px;
   background-repeat: repeat-x;
@@ -251,8 +430,53 @@ footer {
   background: var(--purple);
   font-size: 0.85rem;
   font-family: var(--heading);
+  margin-top: auto;
+}
+
+footer .btn {
+  margin-bottom: 1rem;
+}
+
+footer p {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-top: auto;
+}
+
+.creative-intro {
+  color: var(--text);
+  font-size: 1.05rem;
+  margin: 1rem 0 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-tile {
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6b6b;
+}
+
+.gallery-tile-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery-tile-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-tile-square {
+  aspect-ratio: 1 / 1;
 }
