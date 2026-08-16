@@ -5,8 +5,8 @@ export const caseStudies = [
     summary:
       'Turning a legacy IT-OT file transfer tool into an enterprise-grade secure sharing product — without giving up air-gapped deployment.',
     role: 'Lead product designer',
-    timeline: '2024 — present',
-    tools: ['Figma'],
+    timeline: '9 months, ongoing',
+    tools: ['Claude Code', 'FigJam', 'Claude', 'Figma'],
     sections: [
       {
         title: 'Challenge',
@@ -71,8 +71,27 @@ export const caseStudies = [
         body: 'Casual users are served where they already work: in their email, file storage and communication channels, through notifications and plugins rather than a destination they have to visit. Power users get a simple, intuitive portal for the files they hold internally — but the portal deliberately stops trying to be another place to do internal work. That stays in SharePoint or Google Drive, and the portal focuses on what it is uniquely for: secure external sharing and automation.',
       },
       {
-        title: 'Outcome',
-        body: 'Results and impact to be added.',
+        title: 'How it was built',
+        body: 'Nine months, in three phases:',
+        items: [
+          'One month of research and planning, concluded in a foundational document that lives in the repo — structure, strategy, tactics and the high-level decisions that act as the spine of the product',
+          'Three months building iteratively, down to inventing a design language that speaks to end-users rather than administrators',
+          'Five months of occasional feature improvements while the admin side was built out',
+        ],
+      },
+      {
+        title: 'Designing it with AI',
+        body: 'Research evidence was collected on a FigJam board and summarised with Claude. The prototype itself was built with Claude Code — not only visuals and flows, but built-in specifications and guidelines stored as .md files in the repo, so the prototype walks developers through its own implementation. Figma stayed in the mix for experimenting with individual layouts and solutions, and the heat map and usability testing ran largely through AI tools against the real prototype.',
+        image: true,
+      },
+      {
+        title: 'Impact',
+        items: [
+          'A full prototype — visuals, flows, and implementation specs and guidelines that developers can build from directly',
+          'Heat map and usability testing on that prototype caught mistakes and misconceptions early, before they could reach development',
+          'Users completed the core interaction 80% faster, and testing measured a 70% improvement in completing actions without hesitation or questions',
+          'The full product has not shipped yet, but several customers are already waiting in line to try it',
+        ],
       },
     ],
   },
