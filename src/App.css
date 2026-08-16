@@ -116,6 +116,50 @@ section {
   font-size: 1.25rem;
 }
 
+.card .link-arrow {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.other-work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.other-work-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+}
+
+.other-work-tag {
+  display: inline-block;
+  background: var(--cream);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.other-work-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+.other-work-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
 #about {
   padding-bottom: 2rem;
 }
