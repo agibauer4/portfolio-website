@@ -3,7 +3,7 @@ function scrollToWork(event) {
   document.getElementById('featured-work')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-function Hero({ role, tagline, availability }) {
+function Hero({ role, tagline, badge, email }) {
   return (
     <section id="hero">
       <div className="hero-shapes" aria-hidden="true">
@@ -32,12 +32,19 @@ function Hero({ role, tagline, availability }) {
       </div>
 
       <div className="hero-content">
-        {availability && <span className="hero-badge">{availability}</span>}
+        {badge && <span className="hero-badge">{badge}</span>}
         <h1>{role}</h1>
         <p>{tagline}</p>
-        <a className="btn hero-cta" href="#featured-work" onClick={scrollToWork}>
-          See featured work ↓
-        </a>
+        <div className="hero-actions">
+          <a className="btn btn-primary" href="#featured-work" onClick={scrollToWork}>
+            See featured work ↓
+          </a>
+          {email && (
+            <a className="btn btn-secondary" href={`mailto:${email}`}>
+              Get in touch
+            </a>
+          )}
+        </div>
       </div>
     </section>
   )

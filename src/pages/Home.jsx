@@ -7,7 +7,12 @@ import WorkCard from '../components/WorkCard.jsx'
 function Home() {
   return (
     <>
-      <Hero role={site.role} tagline={site.tagline} availability={site.availability} />
+      <Hero
+        role={site.role}
+        tagline={site.tagline}
+        badge={site.badge}
+        email={site.email}
+      />
       <div className="scallop" aria-hidden="true" />
 
       <section id="featured-work">

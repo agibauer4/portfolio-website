@@ -185,7 +185,10 @@ section {
   animation: hero-wiggle 5s ease-in-out infinite;
 }
 
-.hero-cta {
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 1.5rem;
 }
 
@@ -510,6 +513,29 @@ section {
 .btn:hover {
   transform: translate(-3px, -3px);
   box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 0 var(--border);
+}
+
+/* Solid fill — reads as the primary action against the gold hero,
+   where a gold button relies on its border alone to separate. */
+.btn-primary {
+  background: var(--text);
+  color: var(--cream);
+}
+
+.btn-primary:hover {
+  background: var(--text);
+}
+
+/* Outline variant — sits below the filled button in the hierarchy */
+.btn-secondary {
+  background: transparent;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: var(--surface);
+  transform: translate(-3px, -3px);
+  box-shadow: 3px 3px 0 0 var(--border);
 }
 
 .link-arrow {

@@ -1,9 +1,9 @@
 export const site = {
   name: 'Agnes Bauer',
-  role: 'I design complexity into something simple',
+  role: 'I make complicated look easy',
   tagline:
-    'Senior product designer and early pioneer of AI-driven design — UX copy that pops, prototypes I ship myself.',
-  availability: 'Open to new projects',
+    'Senior product designer and early pioneer of AI-driven design — from product strategy to prototypes I ship myself.',
+  badge: 'UX and beyond',
   email: 'agi.bauer4@gmail.com',
   aboutTeaser:
     "I'm a senior product designer and product architect who gravitates toward complex B2B systems — and I prototype with AI and ship the results myself.",
