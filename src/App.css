@@ -164,6 +164,65 @@ section {
   padding-bottom: 2rem;
 }
 
+#case-study h2 {
+  margin-top: 2rem;
+}
+
+#case-study h2:first-child {
+  margin-top: 0;
+}
+
+.case-study-summary {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.case-study-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.case-study-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.case-study-meta-label {
+  font-family: var(--heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--purple);
+}
+
+.image-placeholder {
+  aspect-ratio: 16 / 9;
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6b6b;
+  margin: 1rem 0 2rem;
+}
+
+.case-study-next {
+  margin-top: 2rem;
+}
+
 .about-paragraph {
   margin-top: 1rem;
   line-height: 1.55;
