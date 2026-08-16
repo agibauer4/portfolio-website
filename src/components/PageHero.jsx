@@ -1,4 +1,4 @@
-const shapes = {
+export const pageHeroShapes = {
   // Concentric rings — bold, reads clearly even when half off-canvas
   target: (
     <svg className="page-hero-shape" viewBox="0 0 200 200" aria-hidden="true">
@@ -43,7 +43,7 @@ function PageHero({ eyebrow, title, intro, shape = 'target', children }) {
     <>
       <section className="page-hero">
         <div className="page-hero-pattern" aria-hidden="true" />
-        {shapes[shape]}
+        {pageHeroShapes[shape]}
         <div className="page-hero-content">
           {eyebrow}
           <h1>{title}</h1>

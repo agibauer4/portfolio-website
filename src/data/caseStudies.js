@@ -3,7 +3,7 @@ export const caseStudies = [
     slug: 'secure-file-sharing',
     title: 'Secure file sharing',
     summary:
-      'Turning a legacy IT-OT file transfer tool into an enterprise-grade secure sharing product — without giving up air-gapped deployment.',
+      'Turning a legacy IT-OT file transfer tool into an enterprise-grade sharing product — air-gapped deployment fully intact, admin-only mindset firmly retired.',
     role: 'Lead product designer',
     timeline: '9 months, ongoing',
     tools: ['Claude Code', 'FigJam', 'Claude', 'Figma'],
@@ -114,7 +114,7 @@ export const caseStudies = [
     slug: 'esport-portal',
     title: 'Esport portal',
     summary:
-      'A dual-faced tournament platform for esport federations, debuted at a world championship.',
+      'A two-sided tournament platform for esport federations, thrown in at the deep end for its debut: a world championship.',
     role: 'Lead designer',
     timeline: '2021 — 2023',
     tools: ['Figma', 'Miro'],
@@ -144,7 +144,7 @@ export const caseStudies = [
     slug: 'bluelab',
     title: 'BlueLab',
     summary:
-      'Rebuilt booking flow for a decentralised lab service — bounce rate down 15–20%, bookings up.',
+      'Rebuilt the booking flow for a decentralised lab service — bounce rate down 15–20%, bookings up despite demand for tests falling off a cliff.',
     role: 'UX designer',
     timeline: '2021 — 2022',
     tools: ['Figma', 'Miro'],
@@ -174,7 +174,7 @@ export const caseStudies = [
     slug: 'covibed',
     title: 'Covibed',
     summary:
-      'Hospital bed-management software built in 48 hours — winner of the Life Saving category at Hack The Crisis Hungary.',
+      'Hospital bed-management software built in 48 sleep-deprived hours — and it won the Life Saving category at Hack The Crisis Hungary.',
     role: 'UX/UI design, branding, business specification',
     timeline: '2020',
     tools: ['Figma'],

@@ -7,7 +7,7 @@ function Creative() {
       <PageHero
         shape="scatter"
         title="Creative"
-        intro="Photography and other work outside product design."
+        intro="Photography and other things I make when nobody's asking for a Figma file."
       />
 
       <section id="creative">
