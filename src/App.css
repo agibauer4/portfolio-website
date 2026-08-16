@@ -400,3 +400,41 @@ footer p {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+.creative-intro {
+  color: var(--text);
+  font-size: 1.05rem;
+  margin: 1rem 0 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-tile {
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6b6b;
+}
+
+.gallery-tile-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery-tile-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-tile-square {
+  aspect-ratio: 1 / 1;
+}
