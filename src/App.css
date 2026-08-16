@@ -515,15 +515,12 @@ section {
   box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 0 var(--border);
 }
 
-/* Solid fill — reads as the primary action against the gold hero,
-   where a gold button relies on its border alone to separate. */
+/* Palette accent fill so the primary separates from the gold hero.
+   Keeps the standard black offset shadow, which lands on the gold
+   behind the button and stays visible. */
 .btn-primary {
-  background: var(--text);
+  background: var(--purple);
   color: var(--cream);
-}
-
-.btn-primary:hover {
-  background: var(--text);
 }
 
 /* Outline variant — sits below the filled button in the hierarchy */
