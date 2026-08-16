@@ -8,6 +8,11 @@ export const about = {
     [
       "I like being at the front of the development process, aligning client needs with business, technical and user requirements. I've led digital product development end-to-end using design thinking with multidisciplinary teams — holding the range from product strategy and UX architecture down to hands-on UI execution.",
     ],
+    [
+      'These days that range goes further than it used to. I prototype with AI — mainly Claude Code — and ',
+      { bold: true, text: 'deploy working prototypes myself' },
+      ", which means an idea can go from conversation to something a stakeholder can actually click on in a day rather than a sprint. This site is one of them. It's changed how I work: less time spent describing an interaction, more time spent testing whether it holds up.",
+    ],
   ],
   columns: [
     {
@@ -26,6 +31,7 @@ export const about = {
         { text: 'Multi-faced portal and platform development' },
         { text: 'Cybersecurity and secure app design' },
         { text: 'Banking infrastructure and fintech systems' },
+        { text: 'AI-assisted prototyping — designs that ship as working code' },
       ],
     },
     {
@@ -33,6 +39,7 @@ export const about = {
       items: [
         { text: 'Find the sweetspot between what is possible, desirable and profitable' },
         { text: 'Consistency through design patterns' },
+        { text: 'Prototype it before you argue about it' },
         { text: 'Solve problems with a sense of humor' },
       ],
     },

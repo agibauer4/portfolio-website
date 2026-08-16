@@ -7,13 +7,18 @@ import WorkCard from '../components/WorkCard.jsx'
 function Home() {
   return (
     <>
-      <Hero role={site.role} tagline={site.tagline} />
+      <Hero
+        role={site.role}
+        tagline={site.tagline}
+        badge={site.badge}
+        email={site.email}
+      />
       <div className="scallop" aria-hidden="true" />
 
       <section id="featured-work">
         <h2>Featured work</h2>
         <div className="grid">
-          {caseStudies.map((cs) => (
+          {caseStudies.slice(0, 3).map((cs) => (
             <WorkCard
               key={cs.slug}
               title={cs.title}

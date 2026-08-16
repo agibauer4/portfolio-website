@@ -12,6 +12,13 @@
   --radius-card: 18px;
   --radius-pill: 999px;
 
+  /* Layout system: one frame, one gutter, one reading measure.
+     Every top-level band spans the frame; --gutter is the only
+     horizontal inset, so nav, hero and sections all align. */
+  --frame: 1126px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 68ch;
+
   --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --heading: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
   --mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
@@ -36,8 +43,7 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: min(var(--frame), 100%);
   margin: 0 auto;
   border-inline: 4px solid var(--border);
   min-height: 100svh;
@@ -45,6 +51,7 @@ body {
   flex-direction: column;
   box-sizing: border-box;
   background: var(--bg);
+  overflow-x: clip;
 }
 
 h1,
@@ -57,24 +64,19 @@ h3 {
 }
 
 h1 {
-  font-size: 60px;
+  font-size: clamp(2.125rem, 5.5vw, 3.75rem);
   line-height: 0.98;
   letter-spacing: -1px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 38px;
-    margin: 20px 0;
-  }
+  margin: clamp(1.25rem, 3vw, 2rem) 0;
+  overflow-wrap: break-word;
 }
 
 h2 {
-  font-size: 26px;
+  font-size: clamp(1.3rem, 2.2vw, 1.625rem);
   line-height: 100%;
   letter-spacing: -0.2px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 21px;
-  }
+  overflow-wrap: break-word;
 }
 
 p {

@@ -32,26 +32,30 @@ function CaseStudy() {
         </div>
       </div>
 
-      <h2>Context</h2>
-      <p>{caseStudy.context}</p>
-      <div className="image-placeholder" aria-hidden="true">
-        Image placeholder
-      </div>
-
-      <h2>Process</h2>
-      <p>{caseStudy.process}</p>
-      <div className="image-placeholder" aria-hidden="true">
-        Image placeholder
-      </div>
-
-      <h2>Solution</h2>
-      <p>{caseStudy.solution}</p>
-      <div className="image-placeholder" aria-hidden="true">
-        Image placeholder
-      </div>
-
-      <h2>Outcome</h2>
-      <p>{caseStudy.outcome}</p>
+      {caseStudy.sections.map((section, index) => (
+        <div
+          className={`case-study-section${index === 0 ? ' case-study-section-first' : ''}`}
+          key={section.title}
+        >
+          <span className="case-study-section-index">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <h2>{section.title}</h2>
+          {section.body && <p>{section.body}</p>}
+          {section.items && (
+            <ul className="case-study-list">
+              {section.items.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          )}
+          {section.image && (
+            <div className="image-placeholder" aria-hidden="true">
+              Image placeholder
+            </div>
+          )}
+        </div>
+      ))}
 
       {next && (
         <Link className="btn case-study-next" to={`/work/${next.slug}`}>

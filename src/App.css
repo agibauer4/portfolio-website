@@ -9,13 +9,22 @@ body {
   background: var(--bg);
 }
 
+/* Top-level bands span the full frame; --gutter is the only inset.
+   Backgrounds and borders reach the edges, content stays aligned. */
+.nav,
+section,
+footer {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  max-width: 960px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding-block: clamp(1rem, 2.5vw, 1.5rem);
   border-bottom: 3px solid var(--border);
 }
 
@@ -27,8 +36,14 @@ body {
   text-decoration: none;
 }
 
+.nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+}
+
 .nav nav a {
-  margin-left: 0.75rem;
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
@@ -46,7 +61,7 @@ body {
 }
 
 .nav nav a.nav-resume {
-  margin-left: 1rem;
+  margin-left: 0.25rem;
   background: var(--gold);
   border-color: var(--border);
   box-shadow: 3px 3px 0 0 var(--border);
@@ -59,33 +74,54 @@ body {
   box-shadow: 5px 5px 0 0 var(--border);
 }
 
+/* Below ~640px the four links no longer fit beside the name.
+   Tighten them so they hold one row instead of wrapping to three. */
+@media (max-width: 640px) {
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .nav nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.25rem;
+  }
+
+  .nav nav a {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .nav nav a.nav-resume {
+    margin-left: 0;
+  }
+}
+
 #work h1,
 #case-study h1,
 #creative h1,
 #about h1,
 #not-found h1 {
-  font-size: 26px;
+  font-size: clamp(1.3rem, 2.2vw, 1.625rem);
   line-height: 100%;
   letter-spacing: -0.2px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 21px;
-  }
 }
 
 section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  width: 100%;
+  padding-block: clamp(2rem, 5vw, 3rem);
 }
 
 #hero {
+  position: relative;
+  overflow: hidden;
   border-bottom: 4px solid var(--border);
   background: var(--gold);
+  padding-block: clamp(2.5rem, 6vw, 3.5rem);
 }
 
 #hero h1 {
+  margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
@@ -95,11 +131,100 @@ section {
   font-weight: 600;
 }
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: min(40rem, 100%);
+}
+
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-starburst {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 240px;
+  height: 240px;
+  animation: hero-spin 26s linear infinite;
+}
+
+.hero-clover {
+  position: absolute;
+  bottom: -16px;
+  right: 210px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+  .hero-shapes {
+    display: none;
+  }
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 1rem;
+  font-family: var(--heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  box-shadow: 3px 3px 0 0 var(--border);
+  transform: rotate(-4deg);
+  margin-bottom: 1rem;
+  animation: hero-wiggle 5s ease-in-out infinite;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@keyframes hero-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-wiggle {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-starburst,
+  .hero-badge {
+    animation: none;
+  }
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
   margin-top: 1.5rem;
+}
+
+/* Case study cards carry more text — two up reads better than three */
+#work .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
 }
 
 .card {
@@ -165,7 +290,7 @@ section {
 
 .other-work-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 1.25rem;
   margin-top: 1.5rem;
 }
@@ -206,18 +331,46 @@ section {
   padding-bottom: 2rem;
 }
 
+/* Three-tier spacing scale for the long-form case study body:
+   tight within a section (heading -> its own prose/list), a medium
+   step from the intro block into the first section, and a large,
+   unmistakable gap between sections so each reads as one group. */
 #case-study h2 {
-  margin-top: 2rem;
+  margin: 0 0 8px;
 }
 
-#case-study h2:first-child {
-  margin-top: 0;
+.case-study-section {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.case-study-section-first {
+  margin-top: 1.5rem;
+}
+
+.case-study-section-index {
+  display: block;
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--purple);
+  margin: 0 0 0.5rem;
 }
 
 .case-study-summary {
   font-size: 1.1rem;
   color: var(--text);
   margin-bottom: 1.5rem;
+  max-width: var(--measure);
+}
+
+#case-study p {
+  max-width: var(--measure);
+}
+
+.image-placeholder,
+#case-study .case-study-meta {
+  max-width: min(52rem, 100%);
 }
 
 .case-study-meta {
@@ -258,16 +411,34 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #6b6b6b;
-  margin: 1rem 0 2rem;
+  margin: 1.25rem 0 0;
+}
+
+.case-study-list {
+  max-width: var(--measure);
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.case-study-list li {
+  line-height: 1.5;
+}
+
+.case-study-list li::marker {
+  color: var(--purple);
 }
 
 .case-study-next {
-  margin-top: 2rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
 }
 
 .about-paragraph {
   margin-top: 1rem;
   line-height: 1.55;
+  max-width: var(--measure);
 }
 
 .about-paragraph:first-of-type {
@@ -276,7 +447,7 @@ section {
 
 .about-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -379,6 +550,26 @@ section {
   box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 0 var(--border);
 }
 
+/* Palette accent fill so the primary separates from the gold hero.
+   Keeps the standard black offset shadow, which lands on the gold
+   behind the button and stays visible. */
+.btn-primary {
+  background: var(--purple);
+  color: var(--cream);
+}
+
+/* Outline variant — sits below the filled button in the hierarchy */
+.btn-secondary {
+  background: transparent;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: var(--surface);
+  transform: translate(-3px, -3px);
+  box-shadow: 3px 3px 0 0 var(--border);
+}
+
 .link-arrow {
   color: var(--text);
   font-weight: 700;
@@ -399,6 +590,8 @@ section {
 .teaser p {
   font-size: 1.1rem;
   margin-bottom: 1rem;
+  max-width: var(--measure);
+  margin-inline: auto;
 }
 
 #not-found {
@@ -425,7 +618,7 @@ section {
 
 footer {
   text-align: center;
-  padding: 2rem;
+  padding-block: 2rem;
   color: var(--cream);
   background: var(--purple);
   font-size: 0.85rem;
@@ -447,11 +640,12 @@ footer p {
   color: var(--text);
   font-size: 1.05rem;
   margin: 1rem 0 2rem;
+  max-width: var(--measure);
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
   gap: 1.25rem;
 }
 
