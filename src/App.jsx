@@ -13,8 +13,10 @@ function App() {
     <>
       <Nav name={site.name} />
       <Hero role={site.role} tagline={site.tagline} />
+      <div className="scallop" aria-hidden="true" />
       <Work projects={projects} />
       <About />
+      <div className="arch-divider" aria-hidden="true" />
       <Contact email={site.email} />
       <Footer name={site.name} />
     </>

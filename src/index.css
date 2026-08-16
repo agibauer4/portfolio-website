@@ -1,16 +1,20 @@
 :root {
-  --text: #000;
-  --text-h: #000;
-  --bg: #f4f1ea;
+  --text: #121212;
+  --text-h: #121212;
+  --bg: #f5f5dc;
+  --cream: #f5f5dc;
   --surface: #fff;
-  --border: #000;
-  --accent: #ffe600;
-  --accent-2: #ff3d1a;
-  --shadow-offset: 6px;
+  --border: #121212;
+  --purple: #6a1dad;
+  --green: #004d40;
+  --gold: #d4af37;
+  --shadow-offset: 4px;
+  --radius-card: 18px;
+  --radius-pill: 999px;
 
-  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --heading: var(--sans);
-  --mono: ui-monospace, 'Courier New', Consolas, monospace;
+  --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --heading: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0;
@@ -25,10 +29,6 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
-}
-
-* {
-  border-radius: 0 !important;
 }
 
 body {
@@ -51,29 +51,29 @@ h1,
 h2,
 h3 {
   font-family: var(--heading);
-  font-weight: 900;
+  font-weight: 700;
   color: var(--text-h);
   text-transform: uppercase;
 }
 
 h1 {
-  font-size: 64px;
-  line-height: 0.95;
+  font-size: 60px;
+  line-height: 0.98;
   letter-spacing: -1px;
   margin: 32px 0;
   @media (max-width: 1024px) {
-    font-size: 40px;
+    font-size: 38px;
     margin: 20px 0;
   }
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 26px;
   line-height: 100%;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.2px;
   margin: 0 0 8px;
   @media (max-width: 1024px) {
-    font-size: 22px;
+    font-size: 21px;
   }
 }
 
@@ -96,6 +96,7 @@ code {
   font-size: 15px;
   line-height: 135%;
   padding: 4px 8px;
-  background: var(--accent);
+  background: var(--gold);
   border: 2px solid var(--border);
+  border-radius: 6px;
 }
