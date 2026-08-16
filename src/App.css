@@ -431,6 +431,120 @@ section {
   color: var(--purple);
 }
 
+.case-study-table-wrap {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+}
+
+.case-study-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid var(--border);
+  background: var(--surface);
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.case-study-table thead th {
+  background: var(--purple);
+  color: var(--cream);
+  font-family: var(--heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.7rem 1rem;
+  border-right: 2px solid var(--border);
+}
+
+.case-study-table tbody th,
+.case-study-table td {
+  padding: 1rem;
+  border-top: 2px solid var(--border);
+  border-right: 2px solid var(--border);
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.case-study-table thead th:last-child,
+.case-study-table tbody th:last-child,
+.case-study-table td:last-child {
+  border-right: 0;
+}
+
+/* Row header — the segment name anchors each row */
+.case-study-table tbody th {
+  font-family: var(--heading);
+  font-weight: 700;
+  width: 22%;
+  background: var(--cream);
+}
+
+/* A three-column table cannot stay legible on a phone, and sideways
+   scrolling hides the comparison. Collapse each row into a labelled
+   card so the segment stays paired with its own values. */
+@media (max-width: 700px) {
+  .case-study-table,
+  .case-study-table thead,
+  .case-study-table tbody,
+  .case-study-table tr,
+  .case-study-table th,
+  .case-study-table td {
+    display: block;
+    width: auto;
+  }
+
+  .case-study-table {
+    border: 0;
+    background: transparent;
+  }
+
+  .case-study-table thead {
+    display: none;
+  }
+
+  .case-study-table tr {
+    border: 3px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--border);
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .case-study-table tbody th,
+  .case-study-table td {
+    border: 0;
+    padding: 0;
+  }
+
+  .case-study-table tbody th {
+    background: transparent;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-study-table td {
+    margin-top: 0.75rem;
+  }
+
+  .case-study-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--heading);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--purple);
+    margin-bottom: 0.25rem;
+  }
+}
+
+.case-study-closing {
+  margin-top: 1.25rem;
+}
+
 .case-study-next {
   margin-top: clamp(3rem, 6vw, 4.5rem);
 }

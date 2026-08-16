@@ -52,21 +52,39 @@ export const caseStudies = [
       },
       {
         title: 'What makes file sharing work',
-        body: 'A structured teardown of the share flows people already use — single file, single folder and multi-item — across the major services. Mapping the common patterns mattered less than mapping the gaps none of them close: that is where a security-first product can hold a strategic advantage rather than simply catch up.',
+        body: 'A structured teardown of the share flows people already use — single file, single folder and multi-item — across the major services. Mapping the common patterns mattered less than mapping the gaps none of them close well:',
+        items: [
+          'Access management is handled poorly almost everywhere, especially removing access — from a file security perspective, the single most important action in the whole flow',
+          'Removing access needs to work recursively, not just on the one folder it was granted from, and it needs to be obvious to the user how and where that removal actually took effect',
+          'Multi-select file and folder sharing is a deliberate non-goal: showing precisely who has access to what across a mixed multi-item share gets complex fast, and that complexity is exactly what an end-user-targeted product should not carry',
+        ],
       },
       {
         title: 'Solution',
-        body: 'The turning point was recognising that "the end-user" was three different people, and serving them properly meant designing an ecosystem rather than a single product.',
-        items: [
-          'Casual internal users, who want to send, share and receive files compliantly without another system to worry about',
-          'Power internal users, who need a real system — somewhere to automate and configure how sending, sharing and management behave',
-          'External users — partners and collaborators who need to exchange files compliantly without wanting or needing an account',
-        ],
+        body: 'The turning point was recognising that "the end-user" was three different people. Serving them properly meant designing an ecosystem rather than a single product — and meeting each of them where they already are.',
+        table: {
+          headers: ['Segment', 'What they need', 'Where we meet them'],
+          rows: [
+            [
+              'Casual internal users',
+              'To send, share and receive files compliantly, without another system to worry about',
+              'In the tools they already use — email, file storage and communication channels — through notifications and plugins rather than a destination they have to visit',
+            ],
+            [
+              'Power internal users',
+              'A real system: somewhere to automate and configure how sending, sharing and management behave',
+              'A simple, intuitive portal for the files they hold internally, focused on external sharing and automation',
+            ],
+            [
+              'External users',
+              'To exchange files compliantly, without wanting or needing an account',
+              'The share flow itself — no account, no portal to learn, no barrier between them and the file',
+            ],
+          ],
+        },
+        closing:
+          'The deliberate constraint: the portal stops trying to be another place to do internal work. That stays in SharePoint or Google Drive, where it belongs, and the portal focuses on what it is uniquely for.',
         image: true,
-      },
-      {
-        title: 'Meeting each of them where they are',
-        body: 'Casual users are served where they already work: in their email, file storage and communication channels, through notifications and plugins rather than a destination they have to visit. Power users get a simple, intuitive portal for the files they hold internally — but the portal deliberately stops trying to be another place to do internal work. That stays in SharePoint or Google Drive, and the portal focuses on what it is uniquely for: secure external sharing and automation.',
       },
       {
         title: 'How it was built',

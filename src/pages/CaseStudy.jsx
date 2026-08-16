@@ -49,6 +49,43 @@ function CaseStudy() {
               ))}
             </ul>
           )}
+          {section.table && (
+            <div className="case-study-table-wrap">
+              <table className="case-study-table">
+                <thead>
+                  <tr>
+                    {section.table.headers.map((header) => (
+                      <th key={header} scope="col">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.table.rows.map((row) => (
+                    <tr key={row[0]}>
+                      {row.map((cell, cellIndex) =>
+                        cellIndex === 0 ? (
+                          <th
+                            key={cellIndex}
+                            scope="row"
+                            data-label={section.table.headers[cellIndex]}
+                          >
+                            {cell}
+                          </th>
+                        ) : (
+                          <td key={cellIndex} data-label={section.table.headers[cellIndex]}>
+                            {cell}
+                          </td>
+                        )
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {section.closing && <p className="case-study-closing">{section.closing}</p>}
           {section.image && (
             <div className="image-placeholder" aria-hidden="true">
               Image placeholder
