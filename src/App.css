@@ -97,10 +97,6 @@ footer {
   }
 }
 
-#work h1,
-#case-study h1,
-#creative h1,
-#about h1,
 #not-found h1 {
   font-size: clamp(1.3rem, 2.2vw, 1.625rem);
   line-height: 100%;
@@ -335,6 +331,99 @@ section {
    tight within a section (heading -> its own prose/list), a medium
    step from the intro block into the first section, and a large,
    unmistakable gap between sections so each reads as one group. */
+/* Shared banded header for every non-Home page (Work, About, Creative,
+   case study detail) — green rather than Home's gold, so a detail page
+   reads as "inside the site" rather than a second homepage. Carries a
+   dot-grid texture plus one bold rotating shape per page for the
+   brutalist pattern layer; both sit behind .page-hero-content. */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--green);
+  border-bottom: 4px solid var(--border);
+  padding-block: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.page-hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(245, 245, 220, 0.16) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.page-hero-shape {
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  width: clamp(150px, 20vw, 230px);
+  height: clamp(150px, 20vw, 230px);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .page-hero-shape {
+    display: none;
+  }
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--column);
+}
+
+.page-hero h1 {
+  color: var(--cream);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.5px;
+  margin: 0.6rem 0;
+}
+
+.page-hero-intro {
+  color: var(--cream);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.case-study-back {
+  display: inline-block;
+  font-family: var(--heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: var(--cream);
+  border-bottom: 2px solid var(--cream);
+  padding-bottom: 2px;
+}
+
+.case-study-back:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.page-hero .case-study-meta {
+  border-top-color: rgba(245, 245, 220, 0.35);
+}
+
+.page-hero .case-study-meta-label {
+  color: var(--gold);
+}
+
+.page-hero .case-study-meta div span:not(.case-study-meta-label) {
+  color: var(--cream);
+}
+
+/* One shared column for the case study body — prose, meta, tables and
+   images alike — so it has a single right edge. */
+#case-study > * {
+  max-width: var(--column);
+}
+
 #case-study h2 {
   margin: 0 0 8px;
 }
@@ -361,26 +450,14 @@ section {
   font-size: 1.1rem;
   color: var(--text);
   margin-bottom: 1.5rem;
-  max-width: var(--measure);
-}
-
-#case-study p {
-  max-width: var(--measure);
-}
-
-.image-placeholder,
-#case-study .case-study-meta {
-  max-width: min(52rem, 100%);
 }
 
 .case-study-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1rem 0;
+  gap: 1rem 2rem;
+  padding: 1rem 0 0;
   border-top: 2px solid var(--border);
-  border-bottom: 2px solid var(--border);
-  margin-bottom: 1rem;
 }
 
 .case-study-meta div {
@@ -415,7 +492,6 @@ section {
 }
 
 .case-study-list {
-  max-width: var(--measure);
   margin: 0.75rem 0 0;
   padding-left: 1.1rem;
   display: flex;
@@ -429,6 +505,120 @@ section {
 
 .case-study-list li::marker {
   color: var(--purple);
+}
+
+.case-study-table-wrap {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+}
+
+.case-study-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid var(--border);
+  background: var(--surface);
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.case-study-table thead th {
+  background: var(--purple);
+  color: var(--cream);
+  font-family: var(--heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.7rem 1rem;
+  border-right: 2px solid var(--border);
+}
+
+.case-study-table tbody th,
+.case-study-table td {
+  padding: 1rem;
+  border-top: 2px solid var(--border);
+  border-right: 2px solid var(--border);
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.case-study-table thead th:last-child,
+.case-study-table tbody th:last-child,
+.case-study-table td:last-child {
+  border-right: 0;
+}
+
+/* Row header — the segment name anchors each row */
+.case-study-table tbody th {
+  font-family: var(--heading);
+  font-weight: 700;
+  width: 22%;
+  background: var(--cream);
+}
+
+/* A three-column table cannot stay legible on a phone, and sideways
+   scrolling hides the comparison. Collapse each row into a labelled
+   card so the segment stays paired with its own values. */
+@media (max-width: 700px) {
+  .case-study-table,
+  .case-study-table thead,
+  .case-study-table tbody,
+  .case-study-table tr,
+  .case-study-table th,
+  .case-study-table td {
+    display: block;
+    width: auto;
+  }
+
+  .case-study-table {
+    border: 0;
+    background: transparent;
+  }
+
+  .case-study-table thead {
+    display: none;
+  }
+
+  .case-study-table tr {
+    border: 3px solid var(--border);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--border);
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .case-study-table tbody th,
+  .case-study-table td {
+    border: 0;
+    padding: 0;
+  }
+
+  .case-study-table tbody th {
+    background: transparent;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-study-table td {
+    margin-top: 0.75rem;
+  }
+
+  .case-study-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--heading);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--purple);
+    margin-bottom: 0.25rem;
+  }
+}
+
+.case-study-closing {
+  margin-top: 1.25rem;
 }
 
 .case-study-next {
@@ -608,6 +798,10 @@ section {
   background-repeat: repeat-x;
 }
 
+.scallop.scallop-green {
+  background-image: radial-gradient(circle at 14px 0, var(--green) 12px, transparent 13px);
+}
+
 .arch-divider {
   height: 22px;
   background-color: var(--purple);
@@ -634,13 +828,6 @@ footer p {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.creative-intro {
-  color: var(--text);
-  font-size: 1.05rem;
-  margin: 1rem 0 2rem;
-  max-width: var(--measure);
 }
 
 .gallery-grid {
