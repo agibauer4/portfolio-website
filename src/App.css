@@ -272,11 +272,28 @@ section {
   margin-bottom: 1rem;
 }
 
+/* Real card thumbnail — same box as the placeholder it replaces, so a
+   grid of mixed real/placeholder cards keeps one rhythm. Filled edge
+   to edge and anchored to the top, so a tall screenshot reads as a
+   deliberate crop of the real interface rather than a floating shot. */
+.card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: calc(var(--radius-card) - 4px);
+  margin-bottom: 1rem;
+}
+
 .card-large {
   padding: 2rem;
 }
 
-.card-large .card-image-placeholder {
+.card-large .card-image-placeholder,
+.card-large .card-image {
   aspect-ratio: 16 / 10;
 }
 
@@ -491,6 +508,30 @@ section {
   margin: 1.25rem 0 0;
 }
 
+/* Real screens get the same hard-bordered, offset-shadow treatment as
+   the cards, so a dark product shot still sits on the cream page as a
+   deliberate object rather than a floating rectangle. */
+.case-study-figure {
+  margin: 1.25rem 0 0;
+  border: 4px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--border);
+  overflow: hidden;
+  background: var(--surface);
+  line-height: 0;
+}
+
+.case-study-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Tall phone screens would dominate the column at full width. */
+.case-study-figure-narrow {
+  max-width: 280px;
+}
+
 .case-study-list {
   margin: 0.75rem 0 0;
   padding-left: 1.1rem;
@@ -505,6 +546,52 @@ section {
 
 .case-study-list li::marker {
   color: var(--purple);
+}
+
+/* Flow charts — diagrams rather than lists, for the sections where the
+   order or the loop is the point. They scroll sideways on narrow
+   screens like the tables do, rather than shrinking past legibility. */
+.flow {
+  margin-top: 1.25rem;
+}
+
+.flow-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  font-family: var(--heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.flow-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.flow-legend i {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--border);
+  border-radius: 4px;
+}
+
+.flow-wrap {
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.flow-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 620px;
 }
 
 .case-study-table-wrap {
@@ -835,30 +922,6 @@ section {
   position: relative;
   z-index: 2;
   padding-top: 6px;
-}
-
-.stat-row {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  gap: clamp(1.25rem, 4vw, 2.25rem);
-  flex-wrap: wrap;
-  margin: 0 0 1.5rem;
-}
-
-.stat-value {
-  font-family: var(--heading);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  font-size: 0.78rem;
-  color: var(--cream);
-  max-width: 16ch;
 }
 
 @media (max-width: 640px) {

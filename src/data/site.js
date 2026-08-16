@@ -2,7 +2,7 @@ export const site = {
   name: 'Agnes Bauer',
   role: 'I make complicated look easy',
   tagline:
-    'Senior product designer with a head start on AI-driven design — I carry ideas from strategy to shipped prototype myself, so nothing gets lost in the handover.',
+    'Senior product designer with a head start on AI-driven design — I carry ideas from strategy to shipped prototype myself.',
   badge: 'UX and beyond',
   email: 'agi.bauer4@gmail.com',
   aboutTeaser:

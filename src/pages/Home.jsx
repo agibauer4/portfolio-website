@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { site } from '../data/site.js'
 import { caseStudies } from '../data/caseStudies.js'
-import { about } from '../data/about.js'
 import Hero from '../components/Hero.jsx'
 import WorkCard from '../components/WorkCard.jsx'
 
@@ -19,12 +18,13 @@ function Home() {
       <section id="featured-work">
         <h2>Featured work</h2>
         <div className="grid">
-          {caseStudies.slice(0, 3).map((cs) => (
+          {caseStudies.filter((cs) => !cs.hidden).slice(0, 3).map((cs) => (
             <WorkCard
               key={cs.slug}
               title={cs.title}
               description={cs.summary}
               to={`/work/${cs.slug}`}
+              image={cs.card}
             />
           ))}
         </div>
@@ -68,14 +68,6 @@ function Home() {
           <span className="home-band-eyebrow">The person behind it</span>
           <h2>About</h2>
           <p>{site.aboutTeaser}</p>
-          <div className="stat-row">
-            {about.stats.map((stat) => (
-              <div key={stat.label}>
-                <div className="stat-value">{stat.value}</div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
-            ))}
-          </div>
           <Link className="btn" to="/about">
             More about me →
           </Link>

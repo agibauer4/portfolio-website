@@ -15,12 +15,13 @@ function Work() {
 
       <section id="work">
         <div className="grid">
-          {caseStudies.map((cs) => (
+          {caseStudies.filter((cs) => !cs.hidden).map((cs) => (
             <WorkCard
               key={cs.slug}
               title={cs.title}
               description={cs.summary}
               to={`/work/${cs.slug}`}
+              image={cs.card}
               large
             />
           ))}

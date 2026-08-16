@@ -44,11 +44,6 @@ export const about = {
       ],
     },
   ],
-  stats: [
-    { value: '2', label: 'design functions built from scratch' },
-    { value: '9 mo', label: 'flagship case study, still ongoing' },
-    { value: '80%', label: 'faster on the core interaction, tested' },
-  ],
   stack: [
     'Figma ecosystem',
     'Framer',
