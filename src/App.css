@@ -331,12 +331,30 @@ section {
   padding-bottom: 2rem;
 }
 
+/* Three-tier spacing scale for the long-form case study body:
+   tight within a section (heading -> its own prose/list), a medium
+   step from the intro block into the first section, and a large,
+   unmistakable gap between sections so each reads as one group. */
 #case-study h2 {
-  margin-top: 2rem;
+  margin: 0 0 8px;
 }
 
-#case-study h2:first-child {
-  margin-top: 0;
+.case-study-section {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.case-study-section-first {
+  margin-top: 1.5rem;
+}
+
+.case-study-section-index {
+  display: block;
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--purple);
+  margin: 0 0 0.5rem;
 }
 
 .case-study-summary {
@@ -393,7 +411,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #6b6b6b;
-  margin: 1rem 0 2rem;
+  margin: 1.25rem 0 0;
 }
 
 .case-study-list {
@@ -414,7 +432,7 @@ section {
 }
 
 .case-study-next {
-  margin-top: 2rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
 }
 
 .about-paragraph {

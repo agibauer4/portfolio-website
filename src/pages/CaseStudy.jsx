@@ -32,8 +32,14 @@ function CaseStudy() {
         </div>
       </div>
 
-      {caseStudy.sections.map((section) => (
-        <div key={section.title}>
+      {caseStudy.sections.map((section, index) => (
+        <div
+          className={`case-study-section${index === 0 ? ' case-study-section-first' : ''}`}
+          key={section.title}
+        >
+          <span className="case-study-section-index">
+            {String(index + 1).padStart(2, '0')}
+          </span>
           <h2>{section.title}</h2>
           {section.body && <p>{section.body}</p>}
           {section.items && (
