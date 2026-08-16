@@ -4,7 +4,7 @@ function NotFound() {
   return (
     <section id="not-found">
       <h1>Page not found</h1>
-      <p>The page you're looking for doesn't exist.</p>
+      <p>This page doesn't exist — in good company with a few of my early Figma files.</p>
       <Link className="btn" to="/">
         Back to home →
       </Link>

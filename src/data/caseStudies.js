@@ -1,9 +1,14 @@
+import covibedAppOverview from '../assets/covibed/app-overview.png'
+import covibedDashboard from '../assets/covibed/dashboard.png'
+import covibedScanQr from '../assets/covibed/scan-qr.png'
+import covibedBedManagement from '../assets/covibed/bed-management.png'
+
 export const caseStudies = [
   {
     slug: 'secure-file-sharing',
     title: 'Secure file sharing',
     summary:
-      'Turning a legacy IT-OT file transfer tool into an enterprise-grade secure sharing product — without giving up air-gapped deployment.',
+      'Turning a legacy IT-OT file transfer tool into an enterprise-grade sharing product — air-gapped deployment fully intact, admin-only mindset firmly retired.',
     role: 'Lead product designer',
     timeline: '9 months, ongoing',
     tools: ['Claude Code', 'FigJam', 'Claude', 'Figma'],
@@ -114,7 +119,7 @@ export const caseStudies = [
     slug: 'esport-portal',
     title: 'Esport portal',
     summary:
-      'A dual-faced tournament platform for esport federations, debuted at a world championship.',
+      'A two-sided tournament platform for esport federations, thrown in at the deep end for its debut: a world championship.',
     role: 'Lead designer',
     timeline: '2021 — 2023',
     tools: ['Figma', 'Miro'],
@@ -142,9 +147,10 @@ export const caseStudies = [
   },
   {
     slug: 'bluelab',
+    hidden: true,
     title: 'BlueLab',
     summary:
-      'Rebuilt booking flow for a decentralised lab service — bounce rate down 15–20%, bookings up.',
+      'Rebuilt the booking flow for a decentralised lab service — bounce rate down 15–20%, bookings up despite demand for tests falling off a cliff.',
     role: 'UX designer',
     timeline: '2021 — 2022',
     tools: ['Figma', 'Miro'],
@@ -174,29 +180,128 @@ export const caseStudies = [
     slug: 'covibed',
     title: 'Covibed',
     summary:
-      'Hospital bed-management software built in 48 hours — winner of the Life Saving category at Hack The Crisis Hungary.',
+      'Hospital bed-management software built in 48 sleep-deprived hours — and it won the Life Saving category at Hack The Crisis Hungary.',
     role: 'UX/UI design, branding, business specification',
     timeline: '2020',
-    tools: ['Figma'],
+    tools: ['Figma', 'Adobe Illustrator'],
+    card: {
+      src: covibedDashboard,
+      alt: 'The Covibed desktop dashboard, showing hospital capacity by ward',
+    },
     sections: [
       {
-        title: 'Context',
-        body: 'During the first wave of COVID-19, placing the surge of patients was a bottleneck. No software reported bed capacity across wards, so finding a suitable bed took an average of 20 minutes of phone calls between them.',
-        image: true,
+        title: 'Challenge',
+        body: 'During the first wave of COVID-19, one of the biggest problems facing Hungarian hospitals was simply placing patients in beds.',
+        items: [
+          'Staff on the admissions units had no system for checking bed availability across the wards, so finding out how many patients were in each and whether a bed was free meant constant phone calls',
+          'Finding a bed for a patient took 20 minutes on average — far too long when people are queuing in the emergency room and time matters',
+          'From an IT perspective, the hardest constraint was that helping in healthcare means handling patient health data, which is strictly regulated in the EU',
+          'We needed to pivot to an area that does not require patient data at all, while still easing hospital operations at a critical time',
+          'We had 48 hours to produce both a product and a video presentation of our work',
+        ],
       },
       {
-        title: 'Process',
-        body: "The design constraint was unusual and non-negotiable: hospital staff were wearing protection suits with thick gloves. That drove large, highly distinct buttons that stayed pressable through gloves. We also chose a dark theme — protecting staff eyes across long shifts and avoiding waking patients with light from a nurse's phone.",
-        image: true,
+        title: 'Goal',
+        body: 'Design and build a system that lets hospital staff identify bed capacity in real time, on both mobile and desktop.',
+        items: [
+          'Doctors and nurses were wearing protective gear, so the solution had to stay usable while fully geared up',
+          'Not only surface bed availability, but give staff an easy routine for keeping the system up to date',
+          'Alongside availability, show how each bed is equipped — whether it suits normal, sub-intensive or intensive care',
+        ],
+      },
+      {
+        title: 'User interviews',
+        body: 'The hackathon gave us direct access to healthcare professionals working on the front line of the pandemic, so we could ask them what they actually needed.',
+        items: [
+          'Knowing the type of care a bed can provide turned out to be essential, not secondary to availability',
+          "We mapped nurses' routines across the day so the system could tie into standard nursing practice — cleaning a bed when a patient is discharged, for example",
+          'We learned what had to be visible and highlighted on the desktop dashboard so admissions staff could make decisions at a glance, with zero interaction',
+          'Their input was collected and fed directly into the final product',
+        ],
       },
       {
         title: 'Solution',
-        body: 'A web application generating printable QR codes for hospital beds, paired with a mobile app. Staff scan a bed to set availability, type of care and ventilator status; that data aggregates onto a dashboard covering every ward, turning patient placement into a simple lookup.',
-        image: true,
+        body: 'A double-sided platform: a mobile app for managing beds from inside the ward, and a desktop app for setting up and monitoring beds across the hospital.',
+        items: [
+          'On desktop, the admin persona sets up the hospital — creating wards and rooms, assigning personnel to each, and batch-generating QR codes for the beds',
+          'On mobile, ward staff (typically nurses) scan the QR code on a bed to set its availability, care type and whether a ventilator is in use',
+        ],
+        image: {
+          src: covibedAppOverview,
+          alt: 'Three phones showing the Covibed mobile app: bed management, the ward dashboard and QR code scanning',
+        },
       },
       {
-        title: 'Outcome',
-        body: 'The project won the Life Saving category at the Hack The Crisis Hungary 48-hour hackathon and drew immediate media and hospital attention. We built a 1.0 with healthcare professionals and it was trialled, though legislative changes ultimately blocked hospital procurement.',
+        title: 'Setup process',
+        body: 'Getting a hospital onto the system, once, before anything else can run.',
+        flow: {
+          type: 'chain',
+          legend: [
+            { tone: 'gold', label: 'Admin, on desktop' },
+            { tone: 'purple', label: 'System' },
+            { tone: 'cream', label: 'On the ward' },
+            { tone: 'green', label: 'Nurse, on mobile' },
+          ],
+          nodes: [
+            { tone: 'gold', lines: ['Set up wards', 'and rooms'] },
+            { tone: 'purple', lines: ['Batch-generate', 'QR codes'] },
+            { tone: 'cream', lines: ['Laminate and', 'zip-tie to beds'] },
+            { tone: 'gold', lines: ['Assign staff', 'to their wards'] },
+            { tone: 'green', lines: ['Scan beds already', 'occupied'] },
+            { tone: 'purple', lines: ['Dashboard live,', 'reflecting reality'] },
+          ],
+        },
+        image: {
+          src: covibedScanQr,
+          alt: 'The mobile scan screen, showing a laminated QR code attached to a hospital bed',
+          width: 'narrow',
+        },
+      },
+      {
+        title: 'Regular usage',
+        body: 'From then on it is a closed loop: the desktop decides where a patient goes, the bedside records what happened, and the dashboard reflects it straight back.',
+        flow: {
+          type: 'cycle',
+          lanes: [
+            { tone: 'purple', label: 'DESKTOP — ADMISSIONS & NURSING STATIONS' },
+            { tone: 'green', label: 'MOBILE — AT THE BEDSIDE' },
+          ],
+          nodes: [
+            { tone: 'purple', lines: ['Dashboard open, showing', 'live ward capacity'] },
+            { tone: 'gold', lines: ['Patient needs a bed:', 'pick the ward'] },
+            { tone: 'green', lines: ['On arrival: scan bed,', 'set care + ventilator'] },
+            { tone: 'green', lines: ['On discharge: out of use,', 'clean, set available'] },
+          ],
+          loopLabel: ['CAPACITY', 'UPDATES LIVE'],
+        },
+        image: {
+          src: covibedDashboard,
+          alt: 'The desktop dashboard: hospital capacity by ward, with room-by-room availability',
+        },
+      },
+      {
+        title: 'Designing for gloves and night shifts',
+        items: [
+          'We tested button sizes on mobile against the reality that gloved hands press less accurately — size and spacing were the whole ballgame',
+          'We bought several kinds of rubber gloves sold in ordinary shops, so we could feel how different thicknesses and layers affect using a phone',
+          'The mobile interface uses a dark theme deliberately: a nurse entering a ward at night should not wake patients with screen light, and it is easier on their own eyes',
+        ],
+        image: {
+          src: covibedBedManagement,
+          alt: 'The bed management screen: large, widely spaced buttons for availability, care type and ventilator, on a dark background',
+          width: 'narrow',
+        },
+      },
+      {
+        title: 'Impact',
+        items: [
+          'Won the Save Life category at the Hack the Crisis Hungary hackathon',
+          'That drew interest from several hospitals who wanted to trial the app, and negotiations started immediately',
+          'Media attention let us negotiate with Vodafone and Telekom to whitelist the app for hospital personnel during the pandemic, so using it would not eat into their monthly mobile data',
+          'We kept consulting healthcare professionals — running demos and folding feedback back into the product',
+          'Within a month and a half the app was ready for hospital use, with four major hospitals queuing up to try it',
+          'New regulations and legislation ultimately blocked us from contracting with hospitals as a new vendor',
+        ],
       },
     ],
   },

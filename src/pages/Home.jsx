@@ -18,31 +18,62 @@ function Home() {
       <section id="featured-work">
         <h2>Featured work</h2>
         <div className="grid">
-          {caseStudies.slice(0, 3).map((cs) => (
+          {caseStudies.filter((cs) => !cs.hidden).slice(0, 3).map((cs) => (
             <WorkCard
               key={cs.slug}
               title={cs.title}
               description={cs.summary}
               to={`/work/${cs.slug}`}
+              image={cs.card}
             />
           ))}
         </div>
       </section>
 
-      <section id="other-work-teaser" className="teaser">
-        <p>{site.otherWorkTeaser}</p>
-        <Link className="link-arrow" to="/work">
-          See more work →
-        </Link>
+      <section id="other-work-teaser" className="home-band home-band-purple">
+        <div className="page-hero-pattern" aria-hidden="true" />
+        <div className="home-band-content">
+          <span className="home-band-eyebrow">Other work</span>
+          <h2>There's more where that came from</h2>
+          <p>{site.otherWorkTeaser}</p>
+          <Link className="btn" to="/work">
+            See more work →
+          </Link>
+        </div>
       </section>
 
-      <section id="about-teaser" className="teaser">
-        <h2>About</h2>
-        <p>{site.aboutTeaser}</p>
-        <Link className="link-arrow" to="/about">
-          More about me →
-        </Link>
+      <div className="band-interlude" aria-hidden="true">
+        <svg width="72" height="72" viewBox="0 0 100 100">
+          <g fill="var(--green)">
+            <circle cx="50" cy="28" r="26" />
+            <circle cx="72" cy="50" r="26" />
+            <circle cx="50" cy="72" r="26" />
+            <circle cx="28" cy="50" r="26" />
+          </g>
+        </svg>
+      </div>
+
+      <section id="about-teaser" className="home-band home-band-green">
+        <div className="page-hero-pattern" aria-hidden="true" />
+        <svg className="band-rail" width="34" height="150" viewBox="0 0 34 150" aria-hidden="true">
+          <rect x="0" y="0" width="34" height="150" rx="4" fill="var(--gold)" />
+          <g fill="var(--green)">
+            <circle cx="17" cy="20" r="17" />
+            <circle cx="17" cy="55" r="17" />
+            <circle cx="17" cy="90" r="17" />
+            <circle cx="17" cy="125" r="17" />
+          </g>
+        </svg>
+        <div className="home-band-content">
+          <span className="home-band-eyebrow">The person behind it</span>
+          <h2>About</h2>
+          <p>{site.aboutTeaser}</p>
+          <Link className="btn" to="/about">
+            More about me →
+          </Link>
+        </div>
       </section>
+      <div className="scallop scallop-green" aria-hidden="true" />
     </>
   )
 }

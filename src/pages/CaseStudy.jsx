@@ -1,17 +1,18 @@
 import { useParams, Link } from 'react-router-dom'
 import { caseStudies } from '../data/caseStudies.js'
 import PageHero from '../components/PageHero.jsx'
+import FlowChart from '../components/FlowChart.jsx'
 import NotFound from './NotFound.jsx'
 
 function CaseStudy() {
   const { slug } = useParams()
-  const caseStudy = caseStudies.find((cs) => cs.slug === slug)
+  const caseStudy = caseStudies.find((cs) => cs.slug === slug && !cs.hidden)
 
   if (!caseStudy) {
     return <NotFound />
   }
 
-  const next = caseStudies.find((cs) => cs.slug !== caseStudy.slug)
+  const next = caseStudies.find((cs) => cs.slug !== caseStudy.slug && !cs.hidden)
 
   return (
     <>
@@ -59,6 +60,7 @@ function CaseStudy() {
                 ))}
               </ul>
             )}
+            {section.flow && <FlowChart flow={section.flow} />}
             {section.table && (
               <div className="case-study-table-wrap">
                 <table className="case-study-table">
@@ -96,10 +98,19 @@ function CaseStudy() {
               </div>
             )}
             {section.closing && <p className="case-study-closing">{section.closing}</p>}
-            {section.image && (
+            {section.image === true && (
               <div className="image-placeholder" aria-hidden="true">
                 Image placeholder
               </div>
+            )}
+            {section.image?.src && (
+              <figure
+                className={`case-study-figure${
+                  section.image.width === 'narrow' ? ' case-study-figure-narrow' : ''
+                }`}
+              >
+                <img src={section.image.src} alt={section.image.alt} loading="lazy" />
+              </figure>
             )}
           </div>
         ))}
