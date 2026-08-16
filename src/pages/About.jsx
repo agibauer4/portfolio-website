@@ -3,7 +3,7 @@ import { about } from '../data/about.js'
 function About() {
   return (
     <section id="about">
-      <h2>About</h2>
+      <h1>About</h1>
 
       {about.paragraphs.map((segments, i) => (
         <p key={i} className="about-paragraph">

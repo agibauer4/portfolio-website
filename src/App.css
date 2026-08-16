@@ -59,6 +59,20 @@ body {
   box-shadow: 5px 5px 0 0 var(--border);
 }
 
+#work h1,
+#case-study h1,
+#creative h1,
+#about h1,
+#not-found h1 {
+  font-size: 26px;
+  line-height: 100%;
+  letter-spacing: -0.2px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 21px;
+  }
+}
+
 section {
   max-width: 960px;
   margin: 0 auto;
@@ -119,6 +133,34 @@ section {
 .card .link-arrow {
   display: inline-block;
   margin-top: 1rem;
+}
+
+.card-image-placeholder {
+  aspect-ratio: 16 / 9;
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: calc(var(--radius-card) - 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6b6b;
+  margin-bottom: 1rem;
+}
+
+.card-large {
+  padding: 2rem;
+}
+
+.card-large .card-image-placeholder {
+  aspect-ratio: 16 / 10;
+}
+
+.card-large h3 {
+  font-size: 1.5rem;
 }
 
 .other-work-grid {

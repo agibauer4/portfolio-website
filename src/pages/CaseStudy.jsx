@@ -14,7 +14,7 @@ function CaseStudy() {
 
   return (
     <section id="case-study">
-      <h2>{caseStudy.title}</h2>
+      <h1>{caseStudy.title}</h1>
       <p className="case-study-summary">{caseStudy.summary}</p>
 
       <div className="case-study-meta">

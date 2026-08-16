@@ -3,7 +3,7 @@ import { creative } from '../data/creative.js'
 function Creative() {
   return (
     <section id="creative">
-      <h2>Creative</h2>
+      <h1>Creative</h1>
       <p className="creative-intro">Photography and other work outside product design.</p>
       <div className="gallery-grid">
         {creative.map((item) => (

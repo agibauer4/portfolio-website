@@ -7,7 +7,7 @@ function Work() {
   return (
     <>
       <section id="work">
-        <h2>Selected work</h2>
+        <h1>Selected work</h1>
         <div className="grid">
           {caseStudies.map((cs) => (
             <WorkCard
@@ -15,6 +15,7 @@ function Work() {
               title={cs.title}
               description={cs.summary}
               to={`/work/${cs.slug}`}
+              large
             />
           ))}
         </div>

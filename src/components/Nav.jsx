@@ -10,7 +10,7 @@ function Nav({ name }) {
         <Link to="/work">Work</Link>
         <Link to="/creative">Creative</Link>
         <Link to="/about">About</Link>
-        <a className="nav-resume" href="#" target="_blank" rel="noreferrer">
+        <a className="nav-resume" href="#">
           Résumé ↓
         </a>
       </nav>
