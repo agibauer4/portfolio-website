@@ -98,7 +98,6 @@ footer {
 }
 
 #work h1,
-#case-study h1,
 #creative h1,
 #about h1,
 #not-found h1 {
@@ -335,6 +334,46 @@ section {
    tight within a section (heading -> its own prose/list), a medium
    step from the intro block into the first section, and a large,
    unmistakable gap between sections so each reads as one group. */
+/* Case study pages get the same full-bleed banded header as Home, so a
+   detail page opens with a statement rather than straight into body copy. */
+#case-study-hero {
+  background: var(--gold);
+  border-bottom: 4px solid var(--border);
+  padding-block: clamp(2rem, 5vw, 3rem);
+}
+
+#case-study-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.5px;
+  margin: 0.9rem 0 0.6rem;
+}
+
+.case-study-back {
+  display: inline-block;
+  font-family: var(--heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 2px;
+}
+
+.case-study-back:hover {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+/* One shared column for every block on the page — prose, meta, tables
+   and images alike — so the body has a single right edge. */
+#case-study-hero > *,
+#case-study > * {
+  max-width: var(--column);
+}
+
 #case-study h2 {
   margin: 0 0 8px;
 }
@@ -361,26 +400,14 @@ section {
   font-size: 1.1rem;
   color: var(--text);
   margin-bottom: 1.5rem;
-  max-width: var(--measure);
-}
-
-#case-study p {
-  max-width: var(--measure);
-}
-
-.image-placeholder,
-#case-study .case-study-meta {
-  max-width: min(52rem, 100%);
 }
 
 .case-study-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1rem 0;
+  gap: 1rem 2rem;
+  padding: 1rem 0 0;
   border-top: 2px solid var(--border);
-  border-bottom: 2px solid var(--border);
-  margin-bottom: 1rem;
 }
 
 .case-study-meta div {
@@ -415,7 +442,6 @@ section {
 }
 
 .case-study-list {
-  max-width: var(--measure);
   margin: 0.75rem 0 0;
   padding-left: 1.1rem;
   display: flex;

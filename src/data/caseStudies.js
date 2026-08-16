@@ -84,7 +84,6 @@ export const caseStudies = [
         },
         closing:
           'The deliberate constraint: the portal stops trying to be another place to do internal work. That stays in SharePoint or Google Drive, where it belongs, and the portal focuses on what it is uniquely for.',
-        image: true,
       },
       {
         title: 'How it was built',

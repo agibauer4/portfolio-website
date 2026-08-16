@@ -13,25 +13,32 @@ function CaseStudy() {
   const next = caseStudies.find((cs) => cs.slug !== caseStudy.slug)
 
   return (
-    <section id="case-study">
-      <h1>{caseStudy.title}</h1>
-      <p className="case-study-summary">{caseStudy.summary}</p>
+    <>
+      <section id="case-study-hero">
+        <Link className="case-study-back" to="/work">
+          ← Selected work
+        </Link>
+        <h1>{caseStudy.title}</h1>
+        <p className="case-study-summary">{caseStudy.summary}</p>
 
-      <div className="case-study-meta">
-        <div>
-          <span className="case-study-meta-label">Role</span>
-          <span>{caseStudy.role}</span>
+        <div className="case-study-meta">
+          <div>
+            <span className="case-study-meta-label">Role</span>
+            <span>{caseStudy.role}</span>
+          </div>
+          <div>
+            <span className="case-study-meta-label">Timeline</span>
+            <span>{caseStudy.timeline}</span>
+          </div>
+          <div>
+            <span className="case-study-meta-label">Tools</span>
+            <span>{caseStudy.tools.join(', ')}</span>
+          </div>
         </div>
-        <div>
-          <span className="case-study-meta-label">Timeline</span>
-          <span>{caseStudy.timeline}</span>
-        </div>
-        <div>
-          <span className="case-study-meta-label">Tools</span>
-          <span>{caseStudy.tools.join(', ')}</span>
-        </div>
-      </div>
+      </section>
+      <div className="scallop" aria-hidden="true" />
 
+      <section id="case-study">
       {caseStudy.sections.map((section, index) => (
         <div
           className={`case-study-section${index === 0 ? ' case-study-section-first' : ''}`}
@@ -99,7 +106,8 @@ function CaseStudy() {
           Next case study: {next.title} →
         </Link>
       )}
-    </section>
+      </section>
+    </>
   )
 }
 

@@ -18,6 +18,10 @@
   --frame: 1126px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --measure: 68ch;
+  /* Font-independent column. --measure is in ch, so it yields a
+     different width per font-size; long-form pages need one shared
+     edge regardless of the type size in any given block. */
+  --column: 46rem;
 
   --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --heading: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
