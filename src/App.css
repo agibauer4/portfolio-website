@@ -396,6 +396,23 @@ section {
   margin: 1rem 0 2rem;
 }
 
+.case-study-list {
+  max-width: var(--measure);
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.case-study-list li {
+  line-height: 1.5;
+}
+
+.case-study-list li::marker {
+  color: var(--purple);
+}
+
 .case-study-next {
   margin-top: 2rem;
 }
