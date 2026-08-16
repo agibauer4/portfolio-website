@@ -2,12 +2,18 @@ import { caseStudies } from '../data/caseStudies.js'
 import { otherWork } from '../data/otherWork.js'
 import WorkCard from '../components/WorkCard.jsx'
 import OtherWorkCard from '../components/OtherWorkCard.jsx'
+import PageHero from '../components/PageHero.jsx'
 
 function Work() {
   return (
     <>
+      <PageHero
+        shape="arches"
+        title="Selected work"
+        intro="Complex B2B systems — cybersecurity, fintech and platforms — taken from research through to shipped product."
+      />
+
       <section id="work">
-        <h1>Selected work</h1>
         <div className="grid">
           {caseStudies.map((cs) => (
             <WorkCard

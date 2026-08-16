@@ -1,22 +1,29 @@
 import { creative } from '../data/creative.js'
+import PageHero from '../components/PageHero.jsx'
 
 function Creative() {
   return (
-    <section id="creative">
-      <h1>Creative</h1>
-      <p className="creative-intro">Photography and other work outside product design.</p>
-      <div className="gallery-grid">
-        {creative.map((item) => (
-          <div
-            key={item.id}
-            className={`gallery-tile gallery-tile-${item.aspect}`}
-            aria-hidden="true"
-          >
-            Photo placeholder
-          </div>
-        ))}
-      </div>
-    </section>
+    <>
+      <PageHero
+        shape="scatter"
+        title="Creative"
+        intro="Photography and other work outside product design."
+      />
+
+      <section id="creative">
+        <div className="gallery-grid">
+          {creative.map((item) => (
+            <div
+              key={item.id}
+              className={`gallery-tile gallery-tile-${item.aspect}`}
+              aria-hidden="true"
+            >
+              Photo placeholder
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   )
 }
 
