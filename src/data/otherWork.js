@@ -1,9 +1,9 @@
 export const otherWork = [
   {
-    title: 'Opswat design system',
+    title: 'Valmis design system',
     description:
-      'Took a robust but ageing design system and gave it a modern, tokenised backbone — set the ground rules for light-to-dark mode conversion and established UX copywriting guidelines across 20+ products.',
-    tag: 'Current role',
+      'Built at R34DY as the internal blueprint for our platform work — brand guidelines through to components. Easily customisable, and shipped as matching Angular and React libraries so design and development shared one source.',
+    tag: 'Design system',
     link: null,
   },
   {
@@ -18,20 +18,6 @@ export const otherWork = [
     description:
       'A year and a half designing a plug-and-play modular banking platform — core systems, KYC and cards.',
     tag: 'Fintech',
-    link: null,
-  },
-  {
-    title: 'This site',
-    description:
-      "Designed, built and deployed by me — prototyped with Claude Code and shipped to GitHub Pages. It's a little on-the-nose, but it's the clearest example of how I work now.",
-    tag: 'AI-built',
-    link: 'https://github.com/agibauer4/portfolio-website',
-  },
-  {
-    title: 'EU-recognised government platform',
-    description:
-      "Early-career work on an award-winning public sector platform. The details are confidential; the award wasn't.",
-    tag: 'Confidential',
     link: null,
   },
 ]
