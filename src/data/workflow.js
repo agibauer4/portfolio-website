@@ -17,17 +17,19 @@ export const workflow = {
       title: 'planning',
       items: [
         'Definition of desired business benefits',
-        'High-level business processes',
+        'High-level functions and flows',
         'Friction and gap analysis to identify the main issues',
         'Turning UML diagrams into user journeys',
+        'Information architecture, drafted with AI, as the backbone for what gets built next',
       ],
-      ai: 'I use AI to pressure-test a process map before anyone builds against it — walking the edge cases and the unhappy paths that would otherwise surface three sprints later.',
+      ai: 'I use AI to pressure-test a process map before anyone builds against it — walking the edge cases and the unhappy paths that would otherwise surface three sprints later. It also drafts the first pass of the information architecture, fast enough to argue with instead of waiting on.',
     },
     {
       title: 'UX design',
       items: [
-        'Low-fidelity wireframes',
-        'Wireframe validation against technology, business and users',
+        'Sketching base screens',
+        'Building core flows with as minimal UI as possible',
+        'Checking flows against tech feasibility and business requirements',
       ],
       ai: "This is where the workflow changed most. Rather than stopping at a static wireframe, I build a working prototype with Claude Code and deploy it myself — so validation happens against something people can click through, not something they have to imagine.",
       pivot: true,
@@ -35,17 +37,17 @@ export const workflow = {
     {
       title: 'UI design',
       items: [
-        'Well-structured design system and components',
-        'High-fidelity UI including error routes',
+        'Improving flows with UI components, layouts, animations and proper copywriting',
+        'Definition of snowflake components',
         'Responsive design across 5 viewports',
-        'Documentation and annotation',
+        'Continuous documentation of features in the repo',
       ],
-      ai: 'AI takes the repetitive component work once the system is defined. The tokens, the patterns and the decisions behind them stay mine — a generated component is only as good as the system it is generated from.',
+      ai: "AI takes the repetitive component, layout and copy work, and keeps the repo's documentation current as features ship. What stays mine is defining the snowflake components — the one-off, high-stakes screens where a generated pattern would flatten what makes the product distinct.",
     },
     {
       title: 'testing',
       items: ['Usability testing', 'A/B testing', 'Measuring impact with analytics'],
-      ai: 'Testing a deployed prototype rather than a clickable mock changes what comes back: feedback about the experience itself, not about the gap between the mock and the thing it stands for.',
+      ai: 'Even before there is a deployed prototype, early flows can be heatmap-tested with AI, and the usability tests themselves can run AI-assisted — so feedback starts arriving before a single line of production code exists. Testing a deployed prototype rather than a clickable mock changes what comes back too: feedback about the experience itself, not about the gap between the mock and the thing it stands for.',
     },
     {
       title: 'iteration',

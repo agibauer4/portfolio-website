@@ -22,7 +22,7 @@ export const about = {
         { text: 'Built 2 design functions from zero (R34DY, MaxWhere) — hired, led and shipped 15+ products, including BlueLab, CompanyHub and Esport Portal' },
         { text: 'Set up process, design systems, QA standards and stakeholder/dev workflows at both' },
         { text: 'Covibed — won the Save Life category at Hack the Crisis Hungary' },
-        { text: 'Designed 1 EU award-winning product for SMEs development', note: 'early career, confidential' },
+        { text: 'Designed 1 EU award-winning product for SMEs development' },
       ],
     },
     {
@@ -41,6 +41,7 @@ export const about = {
         { text: 'Find the sweet spot between what is possible, desirable and profitable' },
         { text: 'Consistency through design patterns' },
         { text: 'Prototype it before you argue about it' },
+        { text: 'Accessibility is a default, not an afterthought' },
         { text: 'Solve problems with a sense of humour' },
       ],
     },
