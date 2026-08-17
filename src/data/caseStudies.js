@@ -165,7 +165,7 @@ export const caseStudies = [
     slug: 'covibed',
     title: 'Covibed',
     summary:
-      'Hospital bed-management software built in 48 sleep-deprived hours — and it won the Save Life category at Hack the Crisis Hungary.',
+      'Hospital bed-management software that let overwhelmed staff track capacity in real time — built for Hack the Crisis Hungary, where it won the Save Life category.',
     role: 'UX/UI design, branding, business specification',
     timeline: '2020',
     tools: ['Figma', 'Adobe Illustrator'],
@@ -236,11 +236,6 @@ export const caseStudies = [
             { tone: 'purple', lines: ['Dashboard live,', 'reflecting reality'] },
           ],
         },
-        image: {
-          src: covibedScanQr,
-          alt: 'The mobile scan screen, showing a laminated QR code attached to a hospital bed',
-          width: 'narrow',
-        },
       },
       {
         title: 'Regular usage',
@@ -249,7 +244,7 @@ export const caseStudies = [
           type: 'cycle',
           lanes: [
             { tone: 'purple', label: 'DESKTOP — ADMISSIONS & NURSING STATIONS' },
-            { tone: 'green', label: 'MOBILE — AT THE BEDSIDE' },
+            { tone: 'green', label: 'MOBILE — BEDSIDE' },
           ],
           nodes: [
             { tone: 'purple', lines: ['Dashboard open, showing', 'live ward capacity'] },
@@ -259,10 +254,17 @@ export const caseStudies = [
           ],
           loopLabel: ['CAPACITY', 'UPDATES LIVE'],
         },
-        image: {
-          src: covibedDashboard,
-          alt: 'The desktop dashboard: hospital capacity by ward, with room-by-room availability',
-        },
+        images: [
+          {
+            src: covibedDashboard,
+            alt: 'The desktop dashboard: hospital capacity by ward, with room-by-room availability',
+          },
+          {
+            src: covibedScanQr,
+            alt: 'The mobile scan screen, showing a laminated QR code attached to a hospital bed',
+            width: 'narrow',
+          },
+        ],
       },
       {
         title: 'Designing for gloves and night shifts',
@@ -276,6 +278,7 @@ export const caseStudies = [
           alt: 'The bed management screen: large, widely spaced buttons for availability, care type and ventilator, on a dark background',
           width: 'narrow',
         },
+        groupWithNext: true,
       },
       {
         title: 'Impact',

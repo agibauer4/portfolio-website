@@ -728,6 +728,89 @@ section {
   max-width: 280px;
 }
 
+/* Pairs a wide screen with a narrow one so the phone shot sits next to
+   its desktop counterpart instead of stranded alone with empty space
+   beside it. */
+.case-study-figure-row {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.case-study-figure-row .case-study-figure {
+  margin-top: 0;
+  flex: 1 1 320px;
+  min-width: 0;
+  height: clamp(240px, 42vw, 440px);
+}
+
+.case-study-figure-row .case-study-figure-narrow {
+  flex: 0 1 240px;
+}
+
+.case-study-figure-row .case-study-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.case-study-figure-row .case-study-figure-narrow img {
+  object-position: center;
+}
+
+/* Two adjacent sections sharing one tall mobile mockup: both bullet
+   lists stack in the left column while the image spans their combined
+   height in the right column, so a short list doesn't strand the phone
+   shot with empty space beneath it. */
+.case-study-section-group {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  grid-template-areas: 'sub1 image' 'sub2 image';
+  column-gap: 1.5rem;
+}
+
+.cs-group-sub1 {
+  grid-area: sub1;
+}
+
+.cs-group-sub2 {
+  grid-area: sub2;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.cs-group-image {
+  grid-area: image;
+  margin-top: 0;
+}
+
+.cs-group-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .case-study-section-group {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'sub1' 'image' 'sub2';
+  }
+
+  .cs-group-image {
+    margin-top: 1.25rem;
+    max-width: 280px;
+    justify-self: center;
+  }
+
+  .cs-group-image img {
+    height: auto;
+    object-fit: initial;
+  }
+}
+
 .case-study-list {
   margin: 0.75rem 0 0;
   padding-left: 1.1rem;
@@ -787,7 +870,16 @@ section {
   display: block;
   width: 100%;
   height: auto;
-  min-width: 620px;
+}
+
+/* Below this, shrinking the diagram to fit would make it illegible, so
+   it scrolls sideways like the tables do instead. Above it, min-width
+   must stay off — it would otherwise overflow the shared text column by
+   a few px and break the right-edge alignment every other element keeps. */
+@media (max-width: 620px) {
+  .flow-wrap svg {
+    min-width: 620px;
+  }
 }
 
 .case-study-table-wrap {
