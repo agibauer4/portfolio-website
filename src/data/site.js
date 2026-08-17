@@ -5,8 +5,10 @@ export const site = {
     'Senior product designer with a head start on AI-driven design — I carry ideas from strategy to shipped prototype myself.',
   badge: 'UX and beyond',
   email: 'agi.bauer4@gmail.com',
+  // Deliberately forward-looking rather than a second positioning line:
+  // the hero already says who I am, so this slot sells the click instead.
   aboutTeaser:
-    "I'm a senior product designer and product architect who gravitates toward complex B2B systems — and I prototype with AI and ship the results myself.",
+    'A closer look at how I work, the stack I reach for, and my achievements.',
   otherWorkTeaser:
     'Design systems, fintech platforms, and a handful of things I built purely because I could.',
   contact: {
