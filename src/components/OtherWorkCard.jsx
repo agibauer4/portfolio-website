@@ -2,12 +2,9 @@ function OtherWorkCard({ title, description, tag, facts, image, link }) {
   return (
     <article className="other-work-card">
       {image ? (
-        <img
-          className="other-work-image"
-          src={image.src}
-          alt={image.alt}
-          loading="lazy"
-        />
+        <div className="other-work-image-frame">
+          <img className="other-work-image" src={image.src} alt={image.alt} loading="lazy" />
+        </div>
       ) : (
         <div className="other-work-image-placeholder" aria-hidden="true">
           Image placeholder

@@ -4,7 +4,9 @@ function WorkCard({ title, description, to, large, image }) {
   return (
     <article className={`card${large ? ' card-large' : ''}`}>
       {image ? (
-        <img className="card-image" src={image.src} alt={image.alt} loading="lazy" />
+        <div className="card-image-frame">
+          <img className="card-image" src={image.src} alt={image.alt} loading="lazy" />
+        </div>
       ) : (
         <div className="card-image-placeholder" aria-hidden="true">
           Image placeholder

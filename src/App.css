@@ -326,9 +326,34 @@ section {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-starburst,
-  .hero-badge {
+  .hero-badge,
+  .page-hero-shape,
+  .ribbon-shape-wrap,
+  .band-rail {
     animation: none;
   }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* A grid item wraps each card so it can animate in on scroll; flex keeps
+   the card itself stretching to fill the row the way it did before this
+   wrapper existed. Once revealed it stays revealed — scrolling back up
+   shouldn't re-hide a card already seen. */
+.reveal {
+  display: flex;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .grid {
@@ -402,7 +427,16 @@ section {
 /* Real card thumbnail — same box as the placeholder it replaces, so a
    grid of mixed real/placeholder cards keeps one rhythm. Filled edge
    to edge and anchored to the top, so a tall screenshot reads as a
-   deliberate crop of the real interface rather than a floating shot. */
+   deliberate crop of the real interface rather than a floating shot. The
+   frame owns the border and clips the image, so the hover zoom scales
+   the picture inside a fixed frame rather than the frame itself. */
+.card-image-frame {
+  overflow: hidden;
+  border: 2px solid var(--border);
+  border-radius: calc(var(--radius-card) - 4px);
+  margin-bottom: 1rem;
+}
+
 .card-image {
   display: block;
   width: 100%;
@@ -410,9 +444,11 @@ section {
   object-fit: cover;
   object-position: top center;
   background: var(--surface);
-  border: 2px solid var(--border);
-  border-radius: calc(var(--radius-card) - 4px);
-  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.04);
 }
 
 .card-large {
@@ -444,11 +480,20 @@ section {
   border: 2px solid var(--border);
   border-radius: var(--radius-card);
   padding: 1.25rem;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.other-work-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 0 var(--border);
 }
 
 /* Same 16:10 box whether the mockup exists yet or not, so a mixed grid
-   keeps one rhythm — matching how the case study cards behave. */
-.other-work-image,
+   keeps one rhythm — matching how the case study cards behave. The frame
+   owns the border and clips the image, so the hover zoom scales the
+   picture inside a fixed frame rather than the frame itself. */
+.other-work-image-frame,
 .other-work-image-placeholder {
   display: block;
   width: 100%;
@@ -458,10 +503,22 @@ section {
   margin-bottom: 1rem;
 }
 
+.other-work-image-frame {
+  overflow: hidden;
+}
+
 .other-work-image {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
   background: var(--cream);
+  transition: transform 0.3s ease;
+}
+
+.other-work-card:hover .other-work-image {
+  transform: scale(1.04);
 }
 
 .other-work-image-placeholder {
@@ -578,6 +635,24 @@ section {
   .page-hero-shape {
     display: none;
   }
+}
+
+/* A slow, low-amplitude float rather than Home's spin — every page-hero
+   shape is a static architectural motif, so it reads as a gentle breath
+   instead of a spinning wheel. Home's own hero has its own animations
+   and doesn't use this class. */
+@keyframes page-hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.page-hero-shape {
+  animation: page-hero-float 6s ease-in-out infinite;
 }
 
 .page-hero-content {
@@ -1383,8 +1458,25 @@ section {
   gap: clamp(0.5rem, 2vw, 1.25rem);
 }
 
-.ribbon-shape {
+/* The wrapper carries the bob so each shape's own hand-set tilt (an
+   inline transform on the svg) stays untouched by the animation. */
+.ribbon-shape-wrap {
+  display: inline-flex;
   flex: 0 0 auto;
+  animation: ribbon-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes ribbon-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.ribbon-shape {
   width: clamp(30px, 4.5vw, 46px);
   height: clamp(30px, 4.5vw, 46px);
   overflow: visible;
@@ -1393,7 +1485,7 @@ section {
 /* Below this the nine shapes would each shrink to a speck. Drop the tail
    instead and let the survivors keep their size and spacing. */
 @media (max-width: 700px) {
-  .ribbon-shape:nth-child(n + 6) {
+  .ribbon-shape-wrap:nth-child(n + 6) {
     display: none;
   }
 }
@@ -1402,6 +1494,7 @@ section {
   position: relative;
   z-index: 2;
   padding-top: 6px;
+  animation: page-hero-float 6s ease-in-out infinite;
 }
 
 @media (max-width: 640px) {

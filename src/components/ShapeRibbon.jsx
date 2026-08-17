@@ -103,14 +103,19 @@ function ShapeRibbon({ variant = 'a', flush = false }) {
     >
       <div className="ribbon">
         {shapes.map(({ shape, tilt }, i) => (
-          <svg
+          <span
             key={`${shape}-${i}`}
-            className="ribbon-shape"
-            viewBox="-6 -6 112 112"
-            style={{ transform: `rotate(${tilt}deg)` }}
+            className="ribbon-shape-wrap"
+            style={{ animationDelay: `${i * 0.12}s` }}
           >
-            {SHAPES[shape](PALETTE[(i + phase) % PALETTE.length])}
-          </svg>
+            <svg
+              className="ribbon-shape"
+              viewBox="-6 -6 112 112"
+              style={{ transform: `rotate(${tilt}deg)` }}
+            >
+              {SHAPES[shape](PALETTE[(i + phase) % PALETTE.length])}
+            </svg>
+          </span>
         ))}
       </div>
     </div>
