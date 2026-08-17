@@ -37,7 +37,7 @@ export const otherWork = [
     facts: ['2021 — 2022', 'Bounce rate down 15–20%', 'Bookings up as demand fell'],
     image: {
       src: bluelabImage,
-      alt: 'The BlueLab profile page shown on a laptop',
+      alt: 'Two steps of the BlueLab booking flow: choosing lab tests, then picking a location, date and time',
     },
     link: null,
   },
