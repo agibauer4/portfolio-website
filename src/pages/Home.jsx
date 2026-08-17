@@ -30,10 +30,12 @@ function Home() {
       <section id="other-work-teaser" className="home-band home-band-purple">
         <div className="page-hero-pattern" aria-hidden="true" />
         <div className="home-band-content">
-          <span className="home-band-eyebrow">Other work</span>
+          <span className="home-band-eyebrow">Other projects</span>
           <h2>There's more where that came from</h2>
           <p>{site.otherWorkTeaser}</p>
-          <Link className="btn" to="/work">
+          {/* Lands on the section itself rather than the top of Work —
+              Layout resolves the hash, since HashRouter will not. */}
+          <Link className="btn" to="/work#other-projects">
             See more work →
           </Link>
         </div>

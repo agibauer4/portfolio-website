@@ -10,7 +10,7 @@ export const site = {
   aboutTeaser:
     'A closer look at how I work, the stack I reach for, and my achievements.',
   otherWorkTeaser:
-    'Design systems, fintech platforms, and a handful of things I built purely because I could.',
+    'A design system, an SME portal and a lab booking rebuild — shorter stories than the case studies, same kind of problem.',
   contact: {
     eyebrow: 'Contact',
     heading: 'Got a complicated problem?',
