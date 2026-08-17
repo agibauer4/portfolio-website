@@ -60,7 +60,7 @@ footer {
   border-color: var(--border);
 }
 
-.nav nav a.nav-resume {
+.nav nav a.nav-cta {
   margin-left: 0.25rem;
   background: var(--gold);
   border-color: var(--border);
@@ -68,32 +68,149 @@ footer {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.nav nav a.nav-resume:hover {
+.nav nav a.nav-cta:hover {
   background: var(--gold);
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 0 var(--border);
 }
 
-/* Below ~640px the four links no longer fit beside the name.
-   Tighten them so they hold one row instead of wrapping to three. */
+/* The hamburger and the Home row are mobile-only: the desktop row needs
+   no trigger, and its wordmark already does Home. */
+.nav-toggle,
+.nav-home {
+  display: none;
+}
+
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block;
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-toggle-bars {
+  position: relative;
+}
+
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle-bars::before {
+  top: -7px;
+}
+
+.nav-toggle-bars::after {
+  top: 7px;
+}
+
+/* Open: the middle bar goes and the outer two cross into an X. */
+.nav[data-menu-open='true'] .nav-toggle-bars {
+  background: transparent;
+}
+
+.nav[data-menu-open='true'] .nav-toggle-bars::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav[data-menu-open='true'] .nav-toggle-bars::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Below ~640px the four links no longer fit beside the name, so they
+   collapse behind a hamburger into a full-screen overlay. */
 @media (max-width: 640px) {
-  .nav {
-    justify-content: flex-start;
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    background: var(--gold);
+    border: 3px solid var(--border);
+    border-radius: var(--radius-pill);
+    box-shadow: 3px 3px 0 0 var(--border);
+    cursor: pointer;
   }
 
   .nav nav {
-    width: 100%;
-    justify-content: space-between;
-    gap: 0.25rem;
+    display: none;
   }
 
-  .nav nav a {
-    font-size: 0.75rem;
-    padding: 0.35rem 0.55rem;
+  /* Sticky rather than fixed while open: it pins the name and the close
+     button to the top however far down the page the menu was opened,
+     without pulling the header out of flow and shifting the content. */
+  .nav[data-menu-open='true'] {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--bg);
   }
 
-  .nav nav a.nav-resume {
-    margin-left: 0;
+  /* The overlay is a descendant of the header, so the header's own
+     z-index cannot lift these above it — they need their own. */
+  .nav[data-menu-open='true'] .nav-name,
+  .nav[data-menu-open='true'] .nav-toggle {
+    position: relative;
+    z-index: 50;
+  }
+
+  .nav[data-menu-open='true'] nav {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    background: var(--bg);
+    padding: 1.5rem var(--gutter) var(--gutter);
+  }
+
+  /* Clears the pinned header, which sits above the overlay rather than
+     in it, so the first link starts just below the wordmark. */
+  .nav[data-menu-open='true'] nav::before {
+    content: '';
+    display: block;
+    height: 4.5rem;
+    flex: none;
+  }
+
+  .nav[data-menu-open='true'] .nav-home {
+    display: block;
+  }
+
+  .nav[data-menu-open='true'] nav a {
+    font-family: var(--heading);
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    padding: 0.25rem 0;
+    border: none;
+  }
+
+  .nav[data-menu-open='true'] nav a:hover {
+    background: transparent;
+    color: var(--purple);
+  }
+
+  .nav[data-menu-open='true'] nav a.nav-cta {
+    margin: 1.75rem 0 0;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    padding: 0.7rem 1.5rem;
+    border: 3px solid var(--border);
+    box-shadow: 4px 4px 0 0 var(--border);
   }
 }
 
@@ -149,13 +266,15 @@ section {
   animation: hero-spin 26s linear infinite;
 }
 
-.hero-clover {
+/* Swept flush into the bottom-right corner, so the shape is anchored by
+   the frame rather than floating at an arbitrary offset mid-band. Reads
+   as a counterweight to the starburst overflowing the corner above it. */
+.hero-arcs {
   position: absolute;
-  bottom: -16px;
-  right: 210px;
-  width: 110px;
-  height: 110px;
-  opacity: 0.9;
+  bottom: 0;
+  right: 0;
+  width: clamp(140px, 15vw, 180px);
+  height: clamp(140px, 15vw, 180px);
 }
 
 @media (max-width: 1024px) {
@@ -224,6 +343,8 @@ section {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 3px solid var(--border);
   border-radius: var(--radius-card);
@@ -251,9 +372,14 @@ section {
   font-size: 1.25rem;
 }
 
+/* Grid rows stretch every card to the tallest one, so pushing the link
+   down with an auto margin lands "Read case study" on a shared baseline
+   however long or short each description runs. align-self keeps the
+   underline hugging the text instead of spanning the card. */
 .card .link-arrow {
-  display: inline-block;
-  margin-top: 1rem;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .card-image-placeholder {
@@ -367,6 +493,12 @@ section {
   background-image: radial-gradient(circle, rgba(245, 245, 220, 0.16) 1.5px, transparent 1.5px);
   background-size: 20px 20px;
   pointer-events: none;
+}
+
+/* The base dots are cream, tuned for the dark purple and green bands.
+   On a light band they disappear, so invert them. */
+.page-hero-pattern.pattern-dark {
+  background-image: radial-gradient(circle, rgba(18, 18, 18, 0.14) 1.5px, transparent 1.5px);
 }
 
 .page-hero-shape {
@@ -914,8 +1046,35 @@ section {
 
 .band-interlude {
   border-top: 4px solid var(--border);
-  text-align: center;
-  padding-block: 1.75rem;
+  padding-block: 1.5rem;
+  padding-inline: var(--gutter);
+}
+
+.band-interlude-flush {
+  border-top: none;
+  padding-top: 0.5rem;
+}
+
+.ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+.ribbon-shape {
+  flex: 0 0 auto;
+  width: clamp(30px, 4.5vw, 46px);
+  height: clamp(30px, 4.5vw, 46px);
+  overflow: visible;
+}
+
+/* Below this the nine shapes would each shrink to a speck. Drop the tail
+   instead and let the survivors keep their size and spacing. */
+@media (max-width: 700px) {
+  .ribbon-shape:nth-child(n + 6) {
+    display: none;
+  }
 }
 
 .band-rail {
@@ -930,6 +1089,79 @@ section {
   }
 
   .band-rail {
+    display: none;
+  }
+}
+
+/* Contact — the page's closing band. Gold, to bookend the hero and to
+   stay off the purple footer directly beneath it; centred, where the two
+   teaser bands above are left-aligned, so it reads as an ending rather
+   than a third teaser. */
+.contact-band {
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--border);
+  background: var(--gold);
+  padding-block: clamp(2.5rem, 6vw, 3.5rem);
+  text-align: center;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--column);
+  margin-inline: auto;
+}
+
+.contact-eyebrow {
+  display: block;
+  font-family: var(--heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.contact-band h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.125rem);
+  margin: 0 0 0.75rem;
+}
+
+.contact-band p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 auto 1.75rem;
+  max-width: var(--measure);
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  font-family: var(--heading);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Bookends the hero's starburst diagonally — top-right at the top of the
+   page, bottom-left at the end of it. */
+.contact-starburst {
+  position: absolute;
+  bottom: -55px;
+  left: -55px;
+  z-index: 1;
+  width: clamp(140px, 16vw, 190px);
+  height: clamp(140px, 16vw, 190px);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .contact-starburst {
     display: none;
   }
 }
@@ -968,10 +1200,6 @@ footer {
   font-size: 0.85rem;
   font-family: var(--heading);
   margin-top: auto;
-}
-
-footer .btn {
-  margin-bottom: 1rem;
 }
 
 footer p {

@@ -1,9 +1,6 @@
-function Footer({ name, email }) {
+function Footer({ name }) {
   return (
     <footer>
-      <a className="btn" href={`mailto:${email}`}>
-        {email}
-      </a>
       <p>
         &copy; {new Date().getFullYear()} {name}
       </p>
