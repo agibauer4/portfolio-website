@@ -29,8 +29,8 @@ function Work() {
         </div>
       </section>
 
-      <section id="other-work">
-        <h2>Other work</h2>
+      <section id="other-projects">
+        <h2>Other projects</h2>
         <div className="other-work-grid">
           {otherWork.map((project) => (
             <OtherWorkCard
