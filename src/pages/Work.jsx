@@ -9,11 +9,12 @@ function Work() {
     <>
       <PageHero
         shape="arches"
-        title="Selected work"
-        intro="Complex B2B systems — cybersecurity, fintech and platforms — taken from research through to shipped product."
+        title="Work"
+        intro="Complex B2B systems taken from research through to shipped product — enterprise security, two-sided platforms and design systems, plus the occasional hackathon build."
       />
 
       <section id="work">
+        <h2>Case studies</h2>
         <div className="grid">
           {caseStudies.filter((cs) => !cs.hidden).map((cs) => (
             <WorkCard
@@ -37,6 +38,8 @@ function Work() {
               title={project.title}
               description={project.description}
               tag={project.tag}
+              facts={project.facts}
+              image={project.image}
               link={project.link}
             />
           ))}

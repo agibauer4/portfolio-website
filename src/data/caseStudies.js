@@ -162,37 +162,6 @@ export const caseStudies = [
     ],
   },
   {
-    slug: 'bluelab',
-    hidden: true,
-    title: 'BlueLab',
-    summary:
-      'Rebuilt the booking flow for a decentralised lab service — bounce rate down 15–20%, bookings up despite demand for tests falling off a cliff.',
-    role: 'UX designer',
-    timeline: '2021 — 2022',
-    tools: ['Figma', 'Miro'],
-    sections: [
-      {
-        title: 'Context',
-        body: 'BlueLab was the standout laboratory service during the first wave of the pandemic, thanks to accessible locations across major cities. As the market saturated, an outdated website and booking system became a real liability — the process was complex enough to cause major conversion problems.',
-        image: true,
-      },
-      {
-        title: 'Process',
-        body: 'We tried and tested the entire experience ourselves, not just the booking system. What surfaced: users needed multiple entry points into the booking flow, far less manual input, and more clarity on how the service actually works.',
-        image: true,
-      },
-      {
-        title: 'Solution',
-        body: 'We modularised the booking steps so they could support multiple entry points across the website while still forming one cohesive journey. Redundant fields and unnecessary steps came out, turning a long form into a slim step-by-step process — with care taken to handle rare scenarios and edge cases rather than designing only for the happy path.',
-        image: true,
-      },
-      {
-        title: 'Outcome',
-        body: 'After launch, demand for COVID tests had dropped sharply — yet bookings gradually increased regardless, and website bounce rate fell by 15–20%.',
-      },
-    ],
-  },
-  {
     slug: 'covibed',
     title: 'Covibed',
     summary:

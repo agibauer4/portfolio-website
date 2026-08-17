@@ -1,37 +1,44 @@
+import valmisImage from '../assets/other-work/valmis.jpg'
+import companyhubImage from '../assets/other-work/companyhub.jpg'
+import bluelabImage from '../assets/other-work/bluelab.jpg'
+
+// `facts` carries the concrete detail — scope, team, outcome — so the
+// description can stay qualitative instead of turning into a stat list.
 export const otherWork = [
   {
-    title: 'Opswat design system',
+    title: 'Valmis design system',
     description:
-      'Took a robust but ageing design system and gave it a modern, tokenised backbone — set the ground rules for light-to-dark mode conversion and established UX copywriting guidelines across 20+ products.',
-    tag: 'Current role',
+      'The internal design system behind R34DY’s platform work — brand guidelines through to components, built so each solution could be customised without rebuilding it.',
+    tag: 'Design system',
+    facts: ['R34DY', 'Angular + React libraries', 'Brand and components'],
+    image: {
+      src: valmisImage,
+      alt: 'Valmis design system components — buttons, badges, progress bars, toggles and toasts',
+    },
     link: null,
   },
   {
     title: 'CompanyHub',
     description:
-      'Lead designer on a one-stop entrepreneurship portal for SMEs — finances, HR, inventory and CRM, all under one roof. 2,000 registered companies and over 5,000 users within months of launch.',
+      'A one-stop entrepreneurship portal for SMEs — finances, HR, inventory and CRM under one roof. Built for owners mostly over 50, so the work was in stripping out financial jargon and guiding people through each task.',
     tag: 'Lead designer',
+    facts: ['Web and mobile', '3 designers', '2,000 companies · 5,000 users'],
+    image: {
+      src: companyhubImage,
+      alt: 'CompanyHub screens: a finance dashboard, an invoicing form and the mobile dashboard',
+    },
     link: null,
   },
   {
-    title: 'Ablements',
+    title: 'BlueLab',
     description:
-      'A year and a half designing a plug-and-play modular banking platform — core systems, KYC and cards.',
-    tag: 'Fintech',
-    link: null,
-  },
-  {
-    title: 'This site',
-    description:
-      "Designed, built and deployed by me — prototyped with Claude Code and shipped to GitHub Pages. It's a little on-the-nose, but it's the clearest example of how I work now.",
-    tag: 'AI-built',
-    link: 'https://github.com/agibauer4/portfolio-website',
-  },
-  {
-    title: 'EU-recognised government platform',
-    description:
-      "Early-career work on an award-winning public sector platform. The details are confidential; the award wasn't.",
-    tag: 'Confidential',
+      'Rebuilt the booking flow for a decentralised lab service. Modularised the steps so they could support several entry points across the site while still reading as one journey, and cut the redundant fields out of a long form.',
+    tag: 'UX designer',
+    facts: ['2021 — 2022', 'Bounce rate down 15–20%', 'Bookings up as demand fell'],
+    image: {
+      src: bluelabImage,
+      alt: 'Two steps of the BlueLab booking flow: choosing lab tests, then picking a location, date and time',
+    },
     link: null,
   },
 ]
