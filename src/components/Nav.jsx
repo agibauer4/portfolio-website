@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+// Must stay in step with the nav's hamburger breakpoint in App.css.
 const DESKTOP_QUERY = '(min-width: 641px)'
 
 function Nav({ name }) {
