@@ -180,7 +180,7 @@ export const caseStudies = [
     slug: 'covibed',
     title: 'Covibed',
     summary:
-      'Hospital bed-management software built in 48 sleep-deprived hours — and it won the Life Saving category at Hack The Crisis Hungary.',
+      'Hospital bed-management software built in 48 sleep-deprived hours — and it won the Save Life category at Hack the Crisis Hungary.',
     role: 'UX/UI design, branding, business specification',
     timeline: '2020',
     tools: ['Figma', 'Adobe Illustrator'],
