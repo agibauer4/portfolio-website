@@ -1,9 +1,18 @@
+import { Link } from 'react-router-dom'
+
+const ARC_RADII = [92, 60, 28]
+
+// Quarter arc swept around the bottom-right corner of the 100x100 box.
+function cornerArc(r) {
+  return `M ${100 - r},100 A ${r},${r} 0 0 1 100,${100 - r}`
+}
+
 function scrollToWork(event) {
   event.preventDefault()
   document.getElementById('featured-work')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-function Hero({ role, tagline, badge, email }) {
+function Hero({ role, tagline, badge }) {
   return (
     <section id="hero">
       <div className="hero-shapes" aria-hidden="true">
@@ -21,12 +30,14 @@ function Hero({ role, tagline, badge, email }) {
             strokeLinejoin="round"
           />
         </svg>
-        <svg className="hero-clover" viewBox="0 0 100 100">
-          <g fill="var(--green)">
-            <circle cx="50" cy="28" r="26" />
-            <circle cx="72" cy="50" r="26" />
-            <circle cx="50" cy="72" r="26" />
-            <circle cx="28" cy="50" r="26" />
+        <svg className="hero-arcs" viewBox="0 0 100 100">
+          <g fill="none">
+            {ARC_RADII.map((r) => (
+              <g key={r}>
+                <path d={cornerArc(r)} stroke="var(--border)" strokeWidth="20" />
+                <path d={cornerArc(r)} stroke="var(--green)" strokeWidth="12" />
+              </g>
+            ))}
           </g>
         </svg>
       </div>
@@ -39,11 +50,9 @@ function Hero({ role, tagline, badge, email }) {
           <a className="btn btn-primary" href="#featured-work" onClick={scrollToWork}>
             See featured work ↓
           </a>
-          {email && (
-            <a className="btn btn-secondary" href={`mailto:${email}`}>
-              Get in touch
-            </a>
-          )}
+          <Link className="btn btn-secondary" to="/#contact">
+            Get in touch
+          </Link>
         </div>
       </div>
     </section>

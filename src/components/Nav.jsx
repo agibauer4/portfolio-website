@@ -10,9 +10,9 @@ function Nav({ name }) {
         <Link to="/work">Work</Link>
         <Link to="/creative">Creative</Link>
         <Link to="/about">About</Link>
-        <a className="nav-resume" href="#">
-          Résumé ↓
-        </a>
+        <Link className="nav-cta" to="/#contact">
+          Get in touch
+        </Link>
       </nav>
     </header>
   )

@@ -3,16 +3,13 @@ import { site } from '../data/site.js'
 import { caseStudies } from '../data/caseStudies.js'
 import Hero from '../components/Hero.jsx'
 import WorkCard from '../components/WorkCard.jsx'
+import Contact from '../components/Contact.jsx'
+import ShapeRibbon from '../components/ShapeRibbon.jsx'
 
 function Home() {
   return (
     <>
-      <Hero
-        role={site.role}
-        tagline={site.tagline}
-        badge={site.badge}
-        email={site.email}
-      />
+      <Hero role={site.role} tagline={site.tagline} badge={site.badge} />
       <div className="scallop" aria-hidden="true" />
 
       <section id="featured-work">
@@ -42,16 +39,7 @@ function Home() {
         </div>
       </section>
 
-      <div className="band-interlude" aria-hidden="true">
-        <svg width="72" height="72" viewBox="0 0 100 100">
-          <g fill="var(--green)">
-            <circle cx="50" cy="28" r="26" />
-            <circle cx="72" cy="50" r="26" />
-            <circle cx="50" cy="72" r="26" />
-            <circle cx="28" cy="50" r="26" />
-          </g>
-        </svg>
-      </div>
+      <ShapeRibbon />
 
       <section id="about-teaser" className="home-band home-band-green">
         <div className="page-hero-pattern" aria-hidden="true" />
@@ -74,6 +62,16 @@ function Home() {
         </div>
       </section>
       <div className="scallop scallop-green" aria-hidden="true" />
+
+      <ShapeRibbon variant="b" flush />
+
+      <Contact
+        eyebrow={site.contact.eyebrow}
+        heading={site.contact.heading}
+        body={site.contact.body}
+        email={site.email}
+        links={site.contact.links}
+      />
     </>
   )
 }
