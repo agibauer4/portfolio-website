@@ -8,9 +8,9 @@ export const otherWork = [
   {
     title: 'Valmis design system',
     description:
-      'The internal design system behind R34DY’s platform work — brand guidelines through to components, built so each solution could be customised without rebuilding it.',
+      'The internal design system behind R34DY’s platform work. Built from atoms and molecules up to entire flow blueprints, so every project in our space could reach for the most optimal, already-proven solution rather than start from scratch.',
     tag: 'Design system',
-    facts: ['R34DY', 'Angular + React libraries', 'Brand and components'],
+    facts: ['Easy theme settings', 'Pre-built flow blueprints', 'Angular + React libraries'],
     image: {
       src: valmisImage,
       alt: 'Valmis design system components — buttons, badges, progress bars, toggles and toasts',
@@ -20,8 +20,8 @@ export const otherWork = [
   {
     title: 'CompanyHub',
     description:
-      'A one-stop entrepreneurship portal for SMEs — finances, HR, inventory and CRM under one roof. Built for owners mostly over 50, so the work was in stripping out financial jargon and guiding people through each task.',
-    tag: 'Lead designer',
+      'A one-stop entrepreneurship portal for SMEs — finances, HR, inventory and CRM under one roof. Built for owners with no finance background, so the work was in stripping out jargon and guiding people through each task.',
+    tag: 'Multi-facing platform design',
     facts: ['Web and mobile', '3 designers', '2,000 companies · 5,000 users'],
     image: {
       src: companyhubImage,
@@ -32,9 +32,9 @@ export const otherWork = [
   {
     title: 'BlueLab',
     description:
-      'Rebuilt the booking flow for a decentralised lab service. Modularised the steps so they could support several entry points across the site while still reading as one journey, and cut the redundant fields out of a long form.',
-    tag: 'UX designer',
-    facts: ['2021 — 2022', 'Bounce rate down 15–20%', 'Bookings up as demand fell'],
+      'Redesigned and rebranded the BlueLab website, rebuilding the booking flow at its core. Modularised the steps so they could support several entry points across the site while still reading as one journey, and cut the redundant fields out of a long form.',
+    tag: 'Website design and booking system',
+    facts: ['2021 — 2022', 'Bounce rate decreased 15–20%', 'Bookings grew despite falling demand'],
     image: {
       src: bluelabImage,
       alt: 'Two steps of the BlueLab booking flow: choosing lab tests, then picking a location, date and time',
