@@ -27,7 +27,7 @@ function Clover({ fill }) {
   )
 }
 
-const SHAPES = {
+export const SHAPES = {
   clover: (fill) => <Clover fill={fill} />,
   burst: (fill) => <polygon points={BURST_POINTS} fill={fill} {...STROKE} />,
   ring: (fill) => (
@@ -53,7 +53,7 @@ const SHAPES = {
   triangle: (fill) => <polygon points="50,10 90,84 10,84" fill={fill} {...STROKE} />,
 }
 
-const PALETTE = ['var(--green)', 'var(--gold)', 'var(--purple)']
+export const PALETTE = ['var(--green)', 'var(--gold)', 'var(--purple)']
 
 // Order and tilt are hand-set rather than generated: the point is that no
 // two neighbours share a shape, a colour or a lean. The page uses two

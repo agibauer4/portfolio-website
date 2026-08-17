@@ -1,5 +1,5 @@
-import { creative } from '../data/creative.js'
 import PageHero from '../components/PageHero.jsx'
+import ComingSoon from '../components/ComingSoon.jsx'
 
 function Creative() {
   return (
@@ -11,17 +11,7 @@ function Creative() {
       />
 
       <section id="creative">
-        <div className="gallery-grid">
-          {creative.map((item) => (
-            <div
-              key={item.id}
-              className={`gallery-tile gallery-tile-${item.aspect}`}
-              aria-hidden="true"
-            >
-              Photo placeholder
-            </div>
-          ))}
-        </div>
+        <ComingSoon body="This gallery is still being framed up — new photography and side projects are on the way. Check back soon." />
       </section>
     </>
   )
