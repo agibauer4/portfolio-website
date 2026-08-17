@@ -38,6 +38,8 @@ function Work() {
               title={project.title}
               description={project.description}
               tag={project.tag}
+              facts={project.facts}
+              image={project.image}
               link={project.link}
             />
           ))}
