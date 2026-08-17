@@ -2,6 +2,9 @@ import covibedAppOverview from '../assets/covibed/app-overview.png'
 import covibedDashboard from '../assets/covibed/dashboard.png'
 import covibedScanQr from '../assets/covibed/scan-qr.png'
 import covibedBedManagement from '../assets/covibed/bed-management.png'
+import esportFederationProfile from '../assets/esport/federation-profile.jpg'
+import esportEventSetup from '../assets/esport/event-setup.jpg'
+import esportMobileViews from '../assets/esport/mobile-views.jpg'
 
 export const caseStudies = [
   {
@@ -123,21 +126,34 @@ export const caseStudies = [
     role: 'Lead designer',
     timeline: '2021 — 2023',
     tools: ['Figma', 'Miro'],
+    card: {
+      src: esportFederationProfile,
+      alt: 'A national federation profile in the esport portal, showing leadership, upcoming events and national team members',
+    },
     sections: [
       {
         title: 'Context',
         body: 'National, regional and international esport federations had nowhere to organise qualifiers and global events, manage national teams, or offer scholarships to pros and casual players. The tangle of organisations, teams, clubs and tournament structures — with no standardised third-party services to lean on — made a comprehensive product genuinely difficult to launch.',
-        image: true,
+        image: {
+          src: esportFederationProfile,
+          alt: 'A national federation profile page: crest and mission, contact details, six leadership roles, upcoming events and national team members',
+        },
       },
       {
         title: 'Process',
         body: "We front-loaded research into how different federations actually operate and how other platforms handle this complexity, then prepared the architecture — especially the database — ahead of time to handle the connections between many layers of organisations, roles and events. Rollout was gradual, sequenced against the season's upcoming events: admin side first, where federations operate, then the player-facing side.",
-        image: true,
+        image: {
+          src: esportEventSetup,
+          alt: 'The admin event review screen for a world championship: event details, title and team compositions, and a sortable table of national federations by continent, country and registration status',
+        },
       },
       {
         title: 'Solution',
         body: 'Two distinct sides of one portal — federation and games — serving 12 separate personas. The balance between complexity and simplicity came from components designed to vary cleanly across role-specific views while still accommodating every necessary function.',
-        image: true,
+        image: {
+          src: esportMobileViews,
+          alt: 'Three phone screens from the portal: filtering national federations, a most-popular federations ranking, and a published events list',
+        },
       },
       {
         title: 'Outcome',

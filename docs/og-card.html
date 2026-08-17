@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --text: #121212;
+        --cream: #f5f5dc;
+        --border: #121212;
+        --purple: #6a1dad;
+        --green: #004d40;
+        --gold: #d4af37;
+        --sans: 'Inter', Helvetica, Arial, sans-serif;
+        --heading: 'IBM Plex Mono', ui-monospace, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: var(--gold);
+        border: 10px solid var(--border);
+        padding: 62px 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-family: var(--sans);
+        color: var(--text);
+      }
+
+      /* Same dot texture the page bands carry. */
+      .pattern {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(18, 18, 18, 0.14) 3px, transparent 3px);
+        background-size: 42px 42px;
+      }
+
+      .name {
+        position: relative;
+        z-index: 2;
+        font-family: var(--heading);
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 34px;
+      }
+
+      h1 {
+        position: relative;
+        z-index: 2;
+        font-family: var(--heading);
+        font-weight: 700;
+        font-size: 86px;
+        line-height: 1.02;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        margin: 0 0 30px;
+        max-width: 830px;
+      }
+
+      p {
+        position: relative;
+        z-index: 2;
+        font-size: 27px;
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 0;
+        max-width: 720px;
+      }
+
+      .badge {
+        position: relative;
+        z-index: 2;
+        align-self: flex-start;
+        margin-top: 38px;
+        background: var(--purple);
+        color: var(--cream);
+        font-family: var(--heading);
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 14px 30px;
+        border: 4px solid var(--border);
+        border-radius: 999px;
+        box-shadow: 7px 7px 0 0 var(--border);
+      }
+
+      /* Hero decor: starburst overflowing the top-right corner, green
+         arcs swept flush into the bottom-right — same as the live hero. */
+      .starburst {
+        position: absolute;
+        top: -96px;
+        right: -96px;
+        width: 400px;
+        height: 400px;
+        z-index: 1;
+      }
+
+      .arcs {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 260px;
+        height: 260px;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="pattern"></div>
+
+      <svg class="starburst" viewBox="0 0 200 200">
+        <polygon
+          points="100,5 115.3,63 167.2,32.8 137,84.7 195,100 137,115.3 167.2,167.2 115.3,137 100,195 84.7,137 32.8,167.2 63,115.3 5,100 63,84.7 32.8,32.8 84.7,63"
+          fill="#6a1dad"
+          stroke="#121212"
+          stroke-width="8"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <svg class="arcs" viewBox="0 0 100 100">
+        <g fill="none">
+          <path d="M 8,100 A 92,92 0 0 1 100,8" stroke="#121212" stroke-width="20" />
+          <path d="M 8,100 A 92,92 0 0 1 100,8" stroke="#004d40" stroke-width="12" />
+          <path d="M 40,100 A 60,60 0 0 1 100,40" stroke="#121212" stroke-width="20" />
+          <path d="M 40,100 A 60,60 0 0 1 100,40" stroke="#004d40" stroke-width="12" />
+          <path d="M 72,100 A 28,28 0 0 1 100,72" stroke="#121212" stroke-width="20" />
+          <path d="M 72,100 A 28,28 0 0 1 100,72" stroke="#004d40" stroke-width="12" />
+        </g>
+      </svg>
+
+      <div class="name">Agnes Bauer</div>
+      <h1>I make complicated look easy</h1>
+      <p>
+        Senior product designer — complex B2B systems, prototyped with AI and
+        shipped as working code.
+      </p>
+      <span class="badge">UX and beyond</span>
+    </div>
+  </body>
+</html>
