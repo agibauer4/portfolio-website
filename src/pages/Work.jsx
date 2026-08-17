@@ -10,7 +10,7 @@ function Work() {
       <PageHero
         shape="arches"
         title="Work"
-        intro="Complex B2B systems — cybersecurity, fintech and platforms — taken from research through to shipped product."
+        intro="Complex B2B systems taken from research through to shipped product — enterprise security, two-sided platforms and design systems, plus the occasional hackathon build."
       />
 
       <section id="work">
