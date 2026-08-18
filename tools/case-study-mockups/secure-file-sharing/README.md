@@ -13,25 +13,35 @@ invented people, filenames, team spaces and storage names throughout.
 
 ## Regenerating
 
-Each file maps to one asset. The `--window-size` height is baked to crop the
-frame tightly, so keep it in sync with the `body { height }` in each file.
+Each file maps to one asset. The `--window-size` is baked to crop each frame
+tightly, so keep it in sync with the `body { height }` (and `width`, where set)
+in the file it renders.
 
 ```bash
 CH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 cd tools/case-study-mockups/secure-file-sharing
+OUT=../../../src/assets/secure-file-sharing
 
 "$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-  --window-size=1600,790 --screenshot=../../../src/assets/secure-file-sharing/dashboard.png \
-  screen-dashboard.html
+  --window-size=1280,800 --screenshot=$OUT/card.png screen-card.html
 
 "$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-  --window-size=1600,772 --screenshot=../../../src/assets/secure-file-sharing/file-library.png \
-  screen-files.html
+  --window-size=1600,790 --screenshot=$OUT/dashboard.png screen-dashboard.html
 
 "$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-  --window-size=1600,706 --screenshot=../../../src/assets/secure-file-sharing/share-file.png \
-  screen-share.html
+  --window-size=1600,772 --screenshot=$OUT/file-library.png screen-files.html
+
+"$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
+  --window-size=1600,700 --screenshot=$OUT/send-files.png screen-send.html
+
+"$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
+  --window-size=1600,706 --screenshot=$OUT/share-file.png screen-share.html
 ```
+
+`screen-card.html` is `screen-dashboard.html` at a 1280x800 viewport — the card
+frame is 16:10, and rendering natively at that ratio keeps the sidebar labels
+instead of letting `object-fit: cover` crop them off. Edit both if the dashboard
+layout changes.
 
 Palette lives in `base.css` as custom properties — changing `--bg`, `--surface`
 and `--primary` there re-skins all three screens at once.

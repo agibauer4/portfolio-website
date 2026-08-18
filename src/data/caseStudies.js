@@ -1,6 +1,8 @@
+import sfsCard from '../assets/secure-file-sharing/card.png'
 import sfsDashboard from '../assets/secure-file-sharing/dashboard.png'
 import sfsFileLibrary from '../assets/secure-file-sharing/file-library.png'
 import sfsShareFile from '../assets/secure-file-sharing/share-file.png'
+import sfsSendFiles from '../assets/secure-file-sharing/send-files.png'
 import covibedAppOverview from '../assets/covibed/app-overview.png'
 import covibedDashboard from '../assets/covibed/dashboard.png'
 import covibedScanQr from '../assets/covibed/scan-qr.png'
@@ -18,6 +20,10 @@ export const caseStudies = [
     role: 'Lead product designer',
     timeline: '9 months, ongoing',
     tools: ['Claude Code', 'FigJam', 'Claude', 'Figma'],
+    card: {
+      src: sfsCard,
+      alt: 'The end-user home screen of the file sharing product, showing a row of cards for items needing attention',
+    },
     sections: [
       {
         title: 'Challenge',
@@ -75,6 +81,10 @@ export const caseStudies = [
           'Removing access needs to work recursively, not just on the one folder it was granted from, and it needs to be obvious to the user how and where that removal actually took effect',
           'Multi-select file and folder sharing is a deliberate non-goal: showing precisely who has access to what across a mixed multi-item share gets complex fast, and that complexity is exactly what an end-user-targeted product should not carry',
         ],
+        image: {
+          src: sfsSendFiles,
+          alt: 'The send flow: recipients and expiry on one side, file picking on the other, with link sharing offered as a secondary action rather than a separate journey',
+        },
       },
       {
         title: 'Solution',
