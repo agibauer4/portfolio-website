@@ -26,10 +26,10 @@ OUT=../../../src/assets/secure-file-sharing
   --window-size=1280,800 --screenshot=$OUT/card.png screen-card.html
 
 "$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-  --window-size=1600,790 --screenshot=$OUT/dashboard.png screen-dashboard.html
+  --window-size=1600,720 --screenshot=$OUT/dashboard.png screen-dashboard.html
 
 "$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-  --window-size=1600,772 --screenshot=$OUT/file-library.png screen-files.html
+  --window-size=1600,832 --screenshot=$OUT/file-library.png screen-files.html
 
 "$CH" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
   --window-size=1600,700 --screenshot=$OUT/send-files.png screen-send.html
