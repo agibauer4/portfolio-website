@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="base.css">
 <style>
-  body { height: 790px; }
+  body { height: 720px; }
   .attn-row { display: flex; gap: 16px; margin-top: 18px; }
   .card {
     flex: 0 0 268px;
@@ -16,10 +16,18 @@
     min-height: 214px;
   }
   .card h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.1px; }
-  .card .fname { font-size: 14px; font-weight: 600; margin-top: 12px; word-break: break-all; line-height: 1.35; }
-  .card .desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.5; margin-top: 7px; }
-  .card .acts { margin-top: auto; display: flex; justify-content: flex-end; align-items: center; gap: 4px; padding-top: 12px; }
-  .card .filetag { margin-top: 14px; }
+  /* Badge sits inline with the filename rather than stacked above it, so the
+     card reads as one file row instead of three separate stacked blocks. */
+  .card .fileline { display: flex; align-items: center; gap: 9px; margin-top: 14px; min-width: 0; }
+  /* Truncate rather than wrap: a long filename breaking mid-word left the
+     cards at ragged heights and read as a layout bug rather than a filename. */
+  .card .fname {
+    font-size: 14px; font-weight: 600; line-height: 1.35;
+    min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .card .desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.5; margin-top: 8px; }
+  .card .acts { margin-top: auto; display: flex; justify-content: flex-start; align-items: center; gap: 8px; padding-top: 14px; }
+  .card .filetag { flex: 0 0 30px; }
   .sec-head { display: flex; align-items: center; gap: 10px; margin-top: 34px; }
   .arrows { margin-left: auto; display: flex; gap: 6px; color: var(--text-dim); }
   .arrows span {
@@ -55,7 +63,7 @@
   <div class="sidebar">
     <div class="cta">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M14.5 1.5L7.2 8.8M14.5 1.5l-4.6 13-2.7-5.7L1.5 6.1z" stroke="#1a0d26" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      Send or request
+      New file transfer
     </div>
     <div class="navitem active">
       <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M2.5 7.5L9 2.5l6.5 5v7a1 1 0 01-1 1h-11a1 1 0 01-1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
@@ -71,7 +79,7 @@
     </div>
     <div class="navitem">
       <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 5.5V9l2.3 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Activity
+      History
     </div>
 
     <div class="sidebar-foot">
@@ -86,10 +94,10 @@
 
   <div class="main">
     <h1>Good morning, Rita</h1>
-    <div class="sub">A delivery didn't go through.</div>
+    <div class="sub">A transfer didn't go through.</div>
 
     <div class="sec-head">
-      <span style="font-size:15px;font-weight:600;">Needs your attention</span>
+      <span style="font-size:15px;font-weight:600;">Waiting on you</span>
       <span class="count">9</span>
       <div class="arrows">
         <span><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -99,43 +107,53 @@
 
     <div class="attn-row">
       <div class="card">
-        <h3>Access requested</h3>
-        <div class="filetag t-xlsx">XLSX</div>
-        <div class="fname">quarterly_forecast_Q3.xlsx</div>
-        <div class="desc">Priya Raman requested Viewer access 5 minutes ago.</div>
-        <div class="acts"><button class="btn btn-ghost">Dismiss</button><button class="btn">Accept</button></div>
+        <h3>Transfer stopped</h3>
+        <div class="fileline">
+          <div class="filetag t-pdf">PDF</div>
+          <div class="fname">integration_notes_v2.pdf</div>
+        </div>
+        <div class="desc">Klaus Wagner never received this — the transfer cut out 45 minutes in.</div>
+        <div class="acts"><button class="btn">Retry</button><button class="btn btn-ghost">Dismiss</button></div>
       </div>
 
       <div class="card">
-        <h3>Delivery failed</h3>
-        <div class="filetag t-pdf">PDF</div>
-        <div class="fname">integration_notes_v2.pdf</div>
-        <div class="desc">Your file to Klaus Wagner didn't get through 45 minutes ago. Try sending it again.</div>
-        <div class="acts"><button class="btn btn-ghost">Dismiss</button><button class="btn">Retry</button></div>
+        <h3>Access runs out today</h3>
+        <div class="fileline">
+          <div class="filetag t-docx">DOCX</div>
+          <div class="fname">budget_allocations_teamA.docx</div>
+        </div>
+        <div class="desc">Three recipients lose access in 3 hours unless you extend it.</div>
+        <div class="acts"><button class="btn">Extend access</button><button class="btn btn-ghost">Dismiss</button></div>
       </div>
 
       <div class="card">
-        <h3>Access expiring</h3>
-        <div class="filetag t-docx">DOCX</div>
-        <div class="fname">budget_allocations_teamA.docx</div>
-        <div class="desc">Shared with 3 people 30 days ago — they'll lose access in 3 hours.</div>
-        <div class="acts"><button class="btn btn-ghost">Dismiss</button><button class="btn">Extend access</button></div>
+        <h3>Someone wants access</h3>
+        <div class="fileline">
+          <div class="filetag t-xlsx">XLSX</div>
+          <div class="fname">quarterly_forecast_Q3.xlsx</div>
+        </div>
+        <div class="desc">Priya Raman asked for Viewer rights 5 minutes ago.</div>
+        <div class="acts"><button class="btn">Approve</button><button class="btn btn-ghost">Dismiss</button></div>
       </div>
 
       <div class="card">
-        <h3>Upload didn't finish</h3>
-        <div class="filetag t-xlsx">XLSX</div>
-        <div class="fname">compliance_checklist.xlsx</div>
-        <div class="desc">Uploaded 1 hour ago — something went wrong during scanning. Try uploading…</div>
-        <div class="acts"><button class="btn btn-ghost">Dismiss</button><button class="btn">Try again</button></div>
+        <h3>Scan didn't finish</h3>
+        <div class="fileline">
+          <div class="filetag t-xlsx">XLSX</div>
+          <div class="fname">compliance_checklist.xlsx</div>
+        </div>
+        <div class="desc">Uploaded an hour ago, but scanning stopped partway through.</div>
+        <div class="acts"><button class="btn">Try again</button><button class="btn btn-ghost">Dismiss</button></div>
       </div>
 
       <div class="card" style="flex:0 0 200px;">
-        <h3>Cleared after…</h3>
-        <div class="filetag t-xlsx">XLSX</div>
-        <div class="fname">q2_budget_re…</div>
-        <div class="desc">This file was held and cleared by your ad…</div>
-        <div class="acts"><button class="btn btn-ghost">Dismiss</button></div>
+        <h3>Released by ad…</h3>
+        <div class="fileline">
+          <div class="filetag t-pptx">PPTX</div>
+          <div class="fname">q2_budget_re…</div>
+        </div>
+        <div class="desc">Held during scanning, then cleared by yo…</div>
+        <div class="acts"><button class="btn">Open</button></div>
       </div>
     </div>
 
@@ -145,17 +163,21 @@
     </div>
 
     <div class="attn-row">
-      <div class="card" style="min-height:186px;">
+      <div class="card" style="min-height:168px;">
         <h3>Waiting for approval</h3>
-        <div class="filetag t-pptx">PPTX</div>
-        <div class="fname">roadmap_review_Q4.pptx</div>
-        <div class="desc">Uploaded 7 hours ago — waiting for approval before it's ready to use.</div>
+        <div class="fileline">
+          <div class="filetag t-pptx">PPTX</div>
+          <div class="fname">roadmap_review_Q4.pptx</div>
+        </div>
+        <div class="desc">Sent for approval 7 hours ago. Recipients can't open it until it clears.</div>
       </div>
-      <div class="card" style="min-height:186px;">
+      <div class="card" style="min-height:168px;">
         <h3>Held for review</h3>
-        <div class="filetag t-xlsx">XLSX</div>
-        <div class="fname">campaign_report_teamC.xlsx</div>
-        <div class="desc">A security issue was found during scanning. Your admin has been notified and will…</div>
+        <div class="fileline">
+          <div class="filetag t-xlsx">XLSX</div>
+          <div class="fname">campaign_report_teamC.xlsx</div>
+        </div>
+        <div class="desc">Scanning flagged a security issue. Your admin has been notified and will…</div>
       </div>
     </div>
   </div>
