@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="base.css">
 <style>
-  body { height: 772px; }
+  body { height: 832px; }
   .railnav { width: 56px; flex: 0 0 56px; border-right: 1px solid var(--line); padding: 14px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .railnav .sq { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); }
   .railnav .sq.cta { background: var(--primary); color: #1a0d26; }
@@ -18,9 +18,17 @@
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); margin-left: auto; }
 
   .recent { display: flex; gap: 14px; margin-top: 14px; }
-  .rcard { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px; display: flex; align-items: center; gap: 12px; }
-  .rcard .nm { font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
-  .rcard .mt { font-size: 11.5px; color: var(--text-mute); margin-top: 4px; }
+  /* Stacked rather than icon-beside-text: the badge and the security tick sit
+     on their own row, which leaves the filename a full card width before it
+     has to truncate. */
+  .rcard {
+    flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; padding: 13px 14px; display: flex; flex-direction: column;
+  }
+  .rcard .rtop { display: flex; align-items: center; margin-bottom: 11px; }
+  .rcard .nm { font-size: 13.5px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rcard .mt { font-size: 11.5px; color: var(--text-mute); margin-top: 5px; }
+  .rcard .sz { color: var(--text-dim); }
 
   table { width: 100%; border-collapse: collapse; margin-top: 12px; }
   thead th {
@@ -39,6 +47,10 @@
   .seg span { width: 32px; height: 30px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); }
   .seg span.on { background: var(--surface-2); color: var(--text); }
   .tag { border: 1px solid var(--line); border-radius: 5px; padding: 3px 8px; font-size: 11.5px; color: var(--text-dim); margin-right: 5px; }
+  .cbox { display: inline-block; width: 15px; height: 15px; border-radius: 4px; border: 1.5px solid var(--text-mute); vertical-align: middle; }
+  .cbox.on { background: var(--primary); border-color: var(--primary); display: flex; align-items: center; justify-content: center; }
+  .ell { color: var(--text-dim); letter-spacing: 1.5px; font-size: 15px; line-height: 1; }
+  tbody tr.sel td { background: rgba(168,85,247,.07); }
 </style>
 </head>
 <body>
@@ -79,14 +91,6 @@
     </div>
     <div class="titem">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="currentColor" opacity=".65"/></svg>
-      My files
-    </div>
-    <div class="titem">
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="currentColor" opacity=".65"/></svg>
-      Requested files
-    </div>
-    <div class="titem">
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="currentColor" opacity=".65"/></svg>
       Shared with me
     </div>
     <div class="titem">
@@ -94,12 +98,20 @@
       Favourites
     </div>
     <div class="titem">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="currentColor" opacity=".65"/></svg>
+      My files
+    </div>
+    <div class="titem">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="currentColor" opacity=".65"/></svg>
+      Requested files
+    </div>
+    <div class="titem">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.7 9h5.6l.7-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Trash
     </div>
 
     <div class="tsplit"></div>
-    <div class="navlabel" style="padding:2px 10px 6px;">Team spaces</div>
+    <div class="navlabel" style="padding:2px 10px 6px;">Company directories</div>
     <div class="titem">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="currentColor" opacity=".65"/></svg>
       Product design
@@ -116,7 +128,7 @@
     </div>
 
     <div class="tsplit"></div>
-    <div class="navlabel" style="padding:2px 10px 6px;">Storages</div>
+    <div class="navlabel" style="padding:2px 10px 6px;">Connected storage</div>
     <div class="titem">
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4.2 12.5a2.7 2.7 0 01-.2-5.4 3.6 3.6 0 016.9-1.1 2.9 2.9 0 01.6 5.7z" fill="currentColor" opacity=".6"/></svg>
       Object storage
@@ -147,20 +159,36 @@
 
     <div class="recent">
       <div class="rcard">
-        <div class="folder"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="#a99bb5"/></svg></div>
-        <div><div class="nm">audit_reports</div><div class="mt">1.4 GB · 2h ago</div></div>
+        <div class="rtop">
+          <div class="filetag t-xlsx" style="width:26px;height:26px;font-size:7px;">XLS</div>
+          <svg style="margin-left:auto" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" fill="#34d399"/><path d="M5.2 8.2l2 2 3.6-4" stroke="#16121a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="nm">quarterly_forecast_Q3.xlsx</div>
+        <div class="mt"><span class="sz">943 KB</span> · edited 40m ago</div>
       </div>
       <div class="rcard">
-        <div class="filetag t-docx" style="width:26px;height:26px;font-size:7px;">DOC</div>
-        <div><div class="nm">supplier_terms_signed <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" fill="#34d399"/><path d="M5.2 8.2l2 2 3.6-4" stroke="#16121a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="mt">512 KB · 6h ago</div></div>
+        <div class="rtop">
+          <div class="filetag t-pdf" style="width:26px;height:26px;font-size:7px;">PDF</div>
+          <svg style="margin-left:auto" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" fill="#34d399"/><path d="M5.2 8.2l2 2 3.6-4" stroke="#16121a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="nm">incident_postmortem.pdf</div>
+        <div class="mt"><span class="sz">2.1 MB</span> · opened 3h ago</div>
       </div>
       <div class="rcard">
-        <div class="filetag t-xlsx" style="width:26px;height:26px;font-size:7px;">XLS</div>
-        <div><div class="nm">quarterly_forecast_Q3 <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" fill="#34d399"/><path d="M5.2 8.2l2 2 3.6-4" stroke="#16121a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="mt">943 KB · 3 days ago</div></div>
+        <div class="rtop">
+          <div class="folder" style="width:26px;height:26px;margin-right:0;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="#a99bb5"/></svg></div>
+          <span style="margin-left:auto;font-size:11px;color:var(--text-mute);">14 items</span>
+        </div>
+        <div class="nm">vendor_assessment</div>
+        <div class="mt"><span class="sz">880 MB</span> · updated yesterday</div>
       </div>
       <div class="rcard">
-        <div class="filetag t-pdf" style="width:26px;height:26px;font-size:7px;">PDF</div>
-        <div><div class="nm">audit_report_sept <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" fill="#34d399"/><path d="M5.2 8.2l2 2 3.6-4" stroke="#16121a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="mt">943 KB · 7 days ago</div></div>
+        <div class="rtop">
+          <div class="filetag t-csv" style="width:26px;height:26px;font-size:7px;">CSV</div>
+          <svg style="margin-left:auto" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" fill="#34d399"/><path d="M5.2 8.2l2 2 3.6-4" stroke="#16121a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="nm">payroll_export_sept.csv</div>
+        <div class="mt"><span class="sz">1.2 MB</span> · shared 4 days ago</div>
       </div>
     </div>
 
@@ -176,105 +204,105 @@
       <table>
         <thead>
           <tr>
-            <th style="width:34px;"></th>
+            <th style="width:40px;"><span class="cbox"></span></th>
             <th>Name</th>
             <th>Security status</th>
             <th>Owner</th>
             <th>Origin</th>
             <th>Sharing</th>
             <th>Modified</th>
-            <th>Tags</th>
             <th>Size</th>
+            <th style="width:44px;"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="folder"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="#a99bb5"/></svg></span>audit_reports <span class="star">★</span></td>
             <td></td>
             <td><span class="who-av">AN</span>Aleks Nowak</td>
             <td>Product design</td>
             <td>Shared</td>
             <td>Oct 8, 2024</td>
-            <td></td>
             <td>1.4 GB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="folder"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="#a99bb5"/></svg></span>finance_reports</td>
             <td></td>
             <td><span class="who-av">RH</span>You</td>
             <td>Computer</td>
             <td>Shared</td>
             <td>Sep 19, 2024</td>
-            <td></td>
             <td>394 KB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="folder"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.5a1 1 0 011-1h3.2l1.3 1.5h6.5a1 1 0 011 1v6.5a1 1 0 01-1 1h-11a1 1 0 01-1-1z" fill="#a99bb5"/></svg></span>team_onboarding_guide <span class="star">★</span></td>
             <td></td>
             <td><span class="who-av">RH</span>You</td>
             <td>Field services</td>
             <td>Shared</td>
             <td>Mar 2, 2025</td>
-            <td></td>
             <td>156 MB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="filetag t-docx" style="width:24px;height:24px;font-size:6.5px;display:inline-flex;margin-right:9px;vertical-align:middle;">DOC</span>strategic_planning_partnerZ.docx</td>
             <td><span class="ok">✓ Allowed to use</span></td>
             <td><span class="who-av">CT</span>Chen Tsai</td>
             <td>Cloud drive</td>
             <td>Shared</td>
             <td>Oct 23, 2024</td>
-            <td></td>
             <td>432 KB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="filetag t-docx" style="width:24px;height:24px;font-size:6.5px;display:inline-flex;margin-right:9px;vertical-align:middle;">DOC</span>board_meetingminutes.docx</td>
             <td><span class="ok">✓ Allowed to use</span></td>
             <td><span class="who-av">JC</span>Jana Coburn</td>
             <td>Chat</td>
             <td>Shared</td>
             <td>Sep 26, 2024</td>
-            <td></td>
             <td>576 KB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="filetag t-xlsx" style="width:24px;height:24px;font-size:6.5px;display:inline-flex;margin-right:9px;vertical-align:middle;">XLS</span>quarterly_forecast_Q3.xlsx</td>
             <td><span class="ok">✓ Allowed to use</span></td>
             <td><span class="who-av">RH</span>You</td>
             <td>Upload</td>
             <td>Shared</td>
             <td>Oct 15, 2024</td>
-            <td><span class="tag">Q1</span><span class="tag">Finance</span></td>
             <td>943 KB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="filetag t-csv" style="width:24px;height:24px;font-size:6.5px;display:inline-flex;margin-right:9px;vertical-align:middle;">CSV</span>data_transfer_log.csv <span class="star">★</span></td>
             <td><span class="ok">✓ Allowed to use</span></td>
             <td><span class="who-av">PR</span>Priya Raman</td>
             <td>File request</td>
             <td>Shared</td>
             <td>Sep 25, 2024</td>
-            <td></td>
             <td>765 MB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
           <tr>
-            <td></td>
+            <td><span class="cbox"></span></td>
             <td><span class="filetag t-pdf" style="width:24px;height:24px;font-size:6.5px;display:inline-flex;margin-right:9px;vertical-align:middle;">PDF</span>audit_report_sept.pdf</td>
             <td><span class="ok">✓ Allowed to use</span></td>
             <td><span class="who-av">AN</span>Aleks Nowak</td>
             <td>Upload</td>
             <td>Private</td>
             <td>Sep 18, 2024</td>
-            <td></td>
             <td>943 KB</td>
+            <td><span class="ell">⋯</span></td>
           </tr>
         </tbody>
       </table>
