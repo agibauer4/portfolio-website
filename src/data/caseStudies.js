@@ -1,3 +1,6 @@
+import sfsDashboard from '../assets/secure-file-sharing/dashboard.png'
+import sfsFileLibrary from '../assets/secure-file-sharing/file-library.png'
+import sfsShareFile from '../assets/secure-file-sharing/share-file.png'
 import covibedAppOverview from '../assets/covibed/app-overview.png'
 import covibedDashboard from '../assets/covibed/dashboard.png'
 import covibedScanQr from '../assets/covibed/scan-qr.png'
@@ -26,7 +29,10 @@ export const caseStudies = [
           'Not a conventional SaaS product — frequently deployed in air-gapped environments on local networks',
           'Significant technical limitations inherited from the legacy back-end',
         ],
-        image: true,
+        image: {
+          src: sfsDashboard,
+          alt: 'The end-user home screen: a "Needs your attention" row of cards for access requests, failed deliveries and expiring access, each paired with a direct action',
+        },
       },
       {
         title: 'Goal',
@@ -46,7 +52,10 @@ export const caseStudies = [
           'Some foundational role-based access control (RBAC) properties were missing entirely',
           'Steps and clicks were benchmarked across 20 real user journeys against those same four services — our product needed more steps than they did in 57% of them',
         ],
-        image: true,
+        image: {
+          src: sfsFileLibrary,
+          alt: 'The file library: a table of files and folders showing security status, owner, origin storage, sharing state and tags side by side',
+        },
       },
       {
         title: 'Design principles',
@@ -105,7 +114,10 @@ export const caseStudies = [
       {
         title: 'Designing it with AI',
         body: 'Research evidence was collected on a FigJam board and summarised with Claude. The prototype itself was built with Claude Code — not only visuals and flows, but built-in specifications and guidelines stored as .md files in the repo, so the prototype walks developers through its own implementation. Figma stayed in the mix for experimenting with individual layouts and solutions, and the heat map and usability testing ran largely through AI tools against the real prototype.',
-        image: true,
+        image: {
+          src: sfsShareFile,
+          alt: 'The share dialog: recipient field with a role selector, the current access list, an optional message, and link sharing kept secondary',
+        },
       },
       {
         title: 'Impact',
